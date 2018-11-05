@@ -1,0 +1,165 @@
+\documentclass[8pt,a4paper,landscape,oneside]{amsart}
+\usepackage{amsmath, amsthm, amssymb, amsfonts}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{booktabs}
+\usepackage{caption}
+\usepackage{color}
+\usepackage{fancyhdr}
+\usepackage{float}
+\usepackage{fullpage}
+%\usepackage{geometry}
+% \usepackage[top=0pt, bottom=1cm, left=0.3cm, right=0.3cm]{geometry}
+\usepackage[top=3pt, bottom=1cm, left=0.3cm, right=0.3cm]{geometry}
+\usepackage{graphicx}
+% \usepackage{listings}
+\usepackage{subcaption}
+\usepackage[scaled]{beramono}
+\usepackage{titling}
+\usepackage{datetime}
+\usepackage{enumitem}
+\usepackage{multicol}
+
+\newcommand{\subtitle}[1]{%
+  \posttitle{%
+    \par\end{center}
+    \begin{center}\large#1\end{center}
+    \vskip0.1em\vspace{-1em}}%
+}
+
+% Minted
+\usepackage{minted}
+\newcommand{\code}[1]{\inputminted[fontsize=\normalsize,baselinestretch=1]{cpp}{_code/#1}}
+\newcommand{\bashcode}[1]{\inputminted{bash}{_code/#1}}
+\newcommand{\regcode}[1]{\inputminted{cpp}{code/#1}}
+
+% Header/Footer
+% \geometry{includeheadfoot}
+%\fancyhf{}
+\pagestyle{fancy}
+\lhead{Ateneo de Manila University}
+\rhead{\thepage}
+\cfoot{}
+\setlength{\headheight}{15.2pt}
+\setlength{\droptitle}{-20pt}
+\posttitle{\par\end{center}}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+% Math and bit operators
+\DeclareMathOperator{\lcm}{lcm}
+\newcommand*\BitAnd{\mathrel{\&}}
+\newcommand*\BitOr{\mathrel{|}}
+\newcommand*\ShiftLeft{\ll}
+\newcommand*\ShiftRight{\gg}
+\newcommand*\BitNeg{\ensuremath{\mathord{\sim}}}
+\DeclareRobustCommand{\stirling}{\genfrac\{\}{0pt}{}}
+
+\newenvironment{myitemize}
+{ \begin{itemize}[leftmargin=.5cm]
+    \setlength{\itemsep}{0pt}
+    \setlength{\parskip}{0pt}
+    \setlength{\parsep}{0pt}     }
+{ \end{itemize}                  }
+
+% Title/Author
+\title{L3}
+\subtitle{Team Notebook}
+\date{\ddmmyyyydate{\today{}}}
+
+% Output Verbosity
+\newif\ifverbose
+\verbosetrue
+% \verbosefalse
+
+\begin{document}
+
+\begin{multicols*}{3}
+\maketitle
+\thispagestyle{fancy}
+\vspace{-3em}
+% \addtocontents{toc}{\protect\enlargethispage{\baselineskip}}
+\tableofcontents
+
+% \clearpage
+
+\section{Data Structures}
+	\subsection{Union Find}
+	\subsection{Segment Tree}
+		\subsubsection{Recursive}
+		\subsubsection{Iterative}
+		\subsubsection{Lazy Propagation}
+		\subsubsection{Persistent}
+	\subsection{Fenwick Tree}
+		\subsubsection{Point-updates}
+		\subsubsection{Range-updates}
+	\subsection{Heap}
+	\subsection{Balanced Binary Search Tree}
+	\subsection{AVL}
+	\subsection{Treap}
+		\subsubsection{Explicit}
+		\subsubsection{Implicit}
+	\subsection{Sparse Table}
+\section{Graphs}
+	\subsection{Single-Source Shortest Paths}
+		\subsubsection{Dijkstra}
+		\subsubsection{Bellman-Ford}
+		\subsubsection{A*}
+	\subsection{All-Pairs Shortest Paths}
+		\subsubsection{Floyd-Washall}
+	\subsection{Strongly Connected Components}
+		\subsubsection{Kosaraju}
+	\subsection{Cut Points and Bridges}
+	\subsection{Minimum Spanning Tree}
+		\subsubsection{Kruskal}
+		\subsubsection{Prim}
+	\subsection{Topological Sorting}
+	\subsection{Bipartite Matching}
+		\subsubsection{Alternating Paths Algorithm}
+		\subsubsection{Hopcroft-Karp Algorithm}
+	\subsection{Maximum Flow}
+		\subsubsection{Edmonds-Karp}
+		\subsubsection{Dinic}
+	\subsection{Centroid Decomposition}
+	\subsection{Least Common Ancestor}
+		\subsubsection{Binary Lifting}
+		\subsubsection{Tarjan's Offline Algorithm}
+\section{Strings}
+	\subsection{Knuth-Morris-Pratt Algorithm}
+	\subsection{Trie}
+	\subsection{Hashing}
+\section{Mathematics}
+	\subsection{Binomial Coefficients}
+	\subsection{Euclidean Algorithm}
+	\subsection{Primality Test}
+		\subsubsection{Optimized Brute Force}
+		\subsubsection{Miller-Rabin}
+		\subsubsection{Pollard's Rho Algorithm}
+	\subsection{Sieve}
+		\subsubsection{Sieve of Eratosthenes}
+		\subsubsection{Divisor Sieve (Modified Sieve of Eratosthenes)}
+		\subsubsection{Phi Sieve}
+	\subsection{Modular Exponentiation}
+	\subsection{Modular Multiplicative Inverse}
+	\subsection{Chinese Remainder Theorem}
+	\subsection{Numeric Integration (Simpson's Rule)}
+	\subsection{Fast Fourier Transform}
+	\subsection{Josephus Problem}
+	\subsection{Number of Integer Points Below a Line}
+\section{Geometry}
+	\subsection{Primitives}
+	\subsection{Lines}
+	\subsection{Circles}
+	\subsection{Polygons}
+	\subsection{Convex Hull (Graham's Scan)}
+	\subsection{Closest Pair of Points}
+	\subsection{Rectilinear Minimum Spanning Tree}
+\section{Other Algorithms}
+	\subsection{2SAT}
+	\subsection{Nth Permutation}
+	\subsection{Floyd's Cycle-Finding}
+	\subsection{Longest Increasing Subsequence}
+	\subsection{Simulated Annealing}
+
+\end{multicols*}
+\end{document}

@@ -55,3 +55,4 @@ for path, dirs, files in os.walk('./code'):
                 print('ERROR: Code too wide: %s' % p)
             elif warning:
                 print('WARNING: Code (almost) too wide: %s' % p)
+
