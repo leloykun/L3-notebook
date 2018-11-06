@@ -28,4 +28,5 @@
 # Other
 /tester/tmp.cpp
 /_code
-/_minted-comprog
+/_minted-notebook
+/notebook.synctex.gz

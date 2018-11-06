@@ -83,16 +83,22 @@
 
 % \clearpage
 
+\section{Code Templates}
+	\code{header.cpp}
 \section{Data Structures}
 	\subsection{Fenwick Tree}
 		\subsubsection{Point-updates}
 		\subsubsection{Range-updates}
 	\subsection{Mergesort Tree}
 	\subsection{Segment Tree}
-		\subsubsection{Recursive}
-		\subsubsection{Iterative}
-		\subsubsection{Lazy Propagation}
-		\subsubsection{Persistent}
+		\subsubsection{Recursive (Point-update)}
+			\code{data-structures/segtree_rec.cpp}
+		\subsubsection{Iterative (Point-update \and operation can be non-commutative)}
+			\code{data-structures/segtree_iter.cpp}
+		\subsubsection{Lazy Propagation (Range-update)}
+			\code{data-structures/segtree_lazy.cpp}
+		\subsubsection{Persistent (Point-update)}
+			\code{data-structures/segtree_persistent.cpp}
 	\subsection{Sparse Table}
 	\subsection{Sqrt Decomposition}
 	\subsection{Treap}
@@ -100,12 +106,24 @@
 		\subsubsection{Implicit}
 		\subsubsection{Persistent}
 	\subsection{Union Find}
+		\code{data-structures/union_find.cpp}
 \section{Graphs}
+	\ifverbose
+	Using adjacency list:
+	\fi
+	\code{graphs/graph_template_adjlist.cpp}
+	\ifverbose
+	Using adjacency matrix:
+	\fi
+	\code{graphs/graph_template_adjmat.cpp}
 	\subsection{Single-Source Shortest Paths}
 		\subsubsection{Dijkstra}
+			\code{graphs/dijkstra.cpp}
 		\subsubsection{Bellman-Ford}
+			\code{graphs/bellman_ford.cpp}
 	\subsection{All-Pairs Shortest Paths}
 		\subsubsection{Floyd-Washall}
+			\code{graphs/floyd_warshall.cpp}
 	\subsection{Strongly Connected Components}
 		\subsubsection{Kosaraju}
 	\subsection{Cut Points and Bridges}
