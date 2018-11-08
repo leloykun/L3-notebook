@@ -1,4 +1,5 @@
-void dijkstra(int s) {
+#include "graph_template_adjlist.cpp"
+void dijkstra(int s, int n, int *dist, vii *adj) {
   for (int u = 0; u < n; ++u)
     dist[u] = INF;
   dist[s] = 0;

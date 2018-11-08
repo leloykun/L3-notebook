@@ -1,4 +1,5 @@
-void bellman_ford() {
+#include "graph_template_adjlist.cpp"
+void bellman_ford(int s, int n, int *dist, vii *adj) {
   for (int u = 0; u < n; ++u)
     dist[u] = INF;
   dist[s] = 0;
@@ -8,7 +9,7 @@ void bellman_ford() {
         if (dist[u] + e.second < dist[e.first])
           dist[e.first] = dist[u] + e.second;  }
 // you can call this after running bellman_ford()
-bool has_neg_cycle() {
+bool has_neg_cycle(int n, int *dist, vii *adj) {
   for (int u = 0; u < n; ++u)
     for (auto &e : adj[u])
       if (dist[e.first] > dist[u] + e.second)

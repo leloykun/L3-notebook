@@ -9,7 +9,6 @@ struct graph {
       for (int j = 0; j < n; ++j)
         mat[i][j] = INF;
       mat[i][i] = 0;  }  }
-
   void add_edge(int u, int v, int w) {
     mat[u][v] = std::min(mat[u][v], w);
-  /*mat[v][u] = std::min(mat[v][u], w);*/  } }
+  /*mat[v][u] = std::min(mat[v][u], w);*/  } };

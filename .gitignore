@@ -26,7 +26,8 @@
 *.dvi
 
 # Other
-/tester/tmp.cpp
+/tester/*
+/reference/*
 /_code
 /_minted-notebook
 /notebook.synctex.gz

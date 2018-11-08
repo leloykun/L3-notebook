@@ -19,6 +19,7 @@
 \usepackage{datetime}
 \usepackage{enumitem}
 \usepackage{multicol}
+\usepackage{bookmark}
 
 \newcommand{\subtitle}[1]{%
   \posttitle{%
@@ -108,14 +109,12 @@
 	\subsection{Union Find}
 		\code{data-structures/union_find.cpp}
 \section{Graphs}
-	\ifverbose
 	Using adjacency list:
-	\fi
 	\code{graphs/graph_template_adjlist.cpp}
-	\ifverbose
 	Using adjacency matrix:
-	\fi
 	\code{graphs/graph_template_adjmat.cpp}
+	Using edge list:
+	\code{graphs/graph_template_edgelist.cpp}
 	\subsection{Single-Source Shortest Paths}
 		\subsubsection{Dijkstra}
 			\code{graphs/dijkstra.cpp}
@@ -140,7 +139,9 @@
 		\subsubsection{Hopcroft-Karp Algorithm}
 	\subsection{Maximum Flow}
 		\subsubsection{Edmonds-Karp}
+			\code{graphs/edmonds_karp.cpp}
 		\subsubsection{Dinic}
+			\code{graphs/dinic.cpp}
 	\subsection{Centroid Decomposition}
 	\subsection{Least Common Ancestor}
 		\subsubsection{Binary Lifting}
