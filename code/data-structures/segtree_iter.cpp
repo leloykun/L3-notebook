@@ -10,10 +10,11 @@ struct segtree {
       vals[i] = vals[i<<1] + vals[i<<1|1];  }
   void update(int i, int v) {
     for (vals[i += n] = v; i > 1; i >>= 1)
-      t[i>>1] = t[i] + t[i^1];  }
+      vals[i>>1] = vals[i] + vals[i^1];  }
   int query(int l, int r) {
+    r++;    // without this, the range is [l,r)
     int res = 0;
     for (l += n, r += n; l < r; l >>= 1, r >>= 1) {
       if (l&1)  res += vals[l++];
       if (r&1)  res += vals[--r];  }
-    return res;  }  }
+    return res;  }  };

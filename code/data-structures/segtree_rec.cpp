@@ -1,7 +1,7 @@
 struct segtree {
   int i, j, val;
   segtree *l, *r;
-  segtree(vi &ar, int _i, int _j) : i(_i), j(_j) {
+  segtree(int *ar, int _i, int _j) : i(_i), j(_j) {
     if (i == j) {
       val = ar[i];
       l = r = NULL;
@@ -19,10 +19,10 @@ struct segtree {
       l->update(_i, _val);
       r->update(_i, _val);
       val = l->val + r->val;  }  }
-  int sum(int _i, int _j) {
+  int query(int _i, int _j) {
     if (_i <= i and j <= _j) {
       return val;
     } else if (_j < i or j < _i) {
       return 0;
     } else {
-      return l->sum(_i, _j) + r->sum(_i, _j);  }  }  };
+      return l->query(_i, _j) + r->query(_i, _j);  }  }  };
