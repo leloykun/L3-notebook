@@ -3,12 +3,7 @@ struct heavy_light_tree {
   int n;
   std::vector<int> *adj;
   segtree *segment_tree;
-  int *par;
-  int *heavy;
-  int *dep;
-  int *path_root;
-  int *pos;
-
+  int *par, *heavy, *dep, *path_root, *pos;
   heavy_light_tree(int n) {
     this->n = n;
     this->adj = new std::vector<int>[n];
@@ -18,11 +13,9 @@ struct heavy_light_tree {
     dep = new int[n];
     path_root = new int[n];
     pos = new int[n];  }
-
   void add_edge(int u, int v) {
     adj[u].push_back(v);
     adj[v].push_back(u);  }
-
   void build(int root) {
     for (int u = 0; u < n; ++u)
       heavy[u] = -1;
@@ -34,7 +27,6 @@ struct heavy_light_tree {
         for (int v = u; v != -1; v = heavy[v]) {
           path_root[v] = u;
           pos[v] = p++;  }  }  }  }
-
   int dfs(int u) {
     int sz = 1;
     int max_subtree_sz = 0;

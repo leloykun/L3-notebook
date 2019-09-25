@@ -2,14 +2,21 @@ import os
 import hashlib
 import re
 
-MARGIN = 100 - 40 - 8 + 7
+MARGIN = 100 - 40 - 8 + 7 - 1
 
+counter = 0
 
 def mkhash(dat):
-    conc = ""
+    global counter
+    # conc = ""
     for i in dat:
-        conc += re.sub('\s*', '', i) + "\n"
-        yield hashlib.md5(conc.decode('utf8')).hexdigest()[:2]
+        # conc += re.sub('\s*', '', i) + "\n"
+        counter += 1;
+        hash = str(hex(counter))[2:]
+        while len(hash) < 3:
+            hash = "0" + hash
+        yield hash
+        # yield hashlib.md5(conc).hexdigest()[:2]
 
 for path, dirs, files in os.walk('./code'):
     for f in files:
@@ -24,31 +31,30 @@ for path, dirs, files in os.walk('./code'):
                 pass
 
             dat = [ line for line in open(p).read().splitlines() if not line.startswith('// vim: ') and not line.startswith('# vim: ') ]
-            out = open(q, 'w')
-
-            warning = False
-            error = False
-            last = False
-            for dat, hash in zip(dat, mkhash(dat)):
+            with open(q, 'w') as out:
+                warning = False
+                error = False
                 last = False
-                s = dat.lstrip(' ')
-                add = len(dat) - len(s)
-                if add > 0:
-                    s = ' ' + s
-                    add -= 1
-                s = '-'*add + s
-                if(len(s) > MARGIN):
-                    print>>out, s
-                    warning = True
-                    last = True
-                    if len(s) > MARGIN+4:
-                        error = True
-                        print len(s), MARGIN
-                        print repr(s)
-                else:
-                    if len(s) < MARGIN:
-                        s = s+' '
-                    print>>out, s.ljust(MARGIN, '-') + "//" + hash
+                for dat, hash in zip(dat, mkhash(dat)):
+                    last = False
+                    s = dat.lstrip(' ')
+                    add = len(dat) - len(s)
+                    if add > 0:
+                        s = ' ' + s
+                        add -= 1
+                    s = '-'*add + s
+                    if(len(s) > MARGIN):
+                        print(s, file=out)
+                        warning = True
+                        last = True
+                        if len(s) > MARGIN+4:
+                            error = True
+                            print(len(s), MARGIN)
+                            print(repr(s))
+                    else:
+                        if len(s) < MARGIN:
+                            s = s+' '
+                        print(s.ljust(MARGIN, '-') + "//" + hash, file=out)
 
             if last:
                 error = True
