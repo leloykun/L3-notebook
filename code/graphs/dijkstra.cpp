@@ -1,5 +1,6 @@
 #include "graph_template_adjlist.cpp"
-void dijkstra(int s, int n, int *dist, vii *adj) {
+// insert inside graph; needs n, dist[], and adj[]
+void dijkstra(int s) {
   for (int u = 0; u < n; ++u)
     dist[u] = INF;
   dist[s] = 0;
@@ -17,4 +18,8 @@ void dijkstra(int s, int n, int *dist, vii *adj) {
       int w = e.second;
       if (dist[v] > dist[u] + w) {
         dist[v] = dist[u] + w;
-        pq.push({dist[v], v});  }  }  }  }
+        pq.push({dist[v], v});
+      }
+    }
+  }
+}

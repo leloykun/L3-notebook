@@ -12,10 +12,12 @@ struct heavy_light_tree {
     heavy = new int[n];
     dep = new int[n];
     path_root = new int[n];
-    pos = new int[n];  }
+    pos = new int[n];
+  }
   void add_edge(int u, int v) {
     adj[u].push_back(v);
-    adj[v].push_back(u);  }
+    adj[v].push_back(u);
+  }
   void build(int root) {
     for (int u = 0; u < n; ++u)
       heavy[u] = -1;
@@ -26,7 +28,11 @@ struct heavy_light_tree {
       if (par[u] == -1 or heavy[par[u]] != u) {
         for (int v = u; v != -1; v = heavy[v]) {
           path_root[v] = u;
-          pos[v] = p++;  }  }  }  }
+          pos[v] = p++;
+        }
+      }
+    }
+  }
   int dfs(int u) {
     int sz = 1;
     int max_subtree_sz = 0;
@@ -37,15 +43,31 @@ struct heavy_light_tree {
         int subtree_sz = dfs(v);
         if (max_subtree_sz < subtree_sz) {
           max_subtree_sz = subtree_sz;
-          heavy[u] = v;  }
-        sz += subtree_sz;  }  }
-    return sz;  }
-  int query(int u) {
-    return segment_tree->sum(pos[u], pos[u]);  }
+          heavy[u] = v;
+        }
+        sz += subtree_sz;
+      }
+    }
+    return sz;
+  }
+  int query(int u, int v) {
+    int res = 0;
+    while (path_root[u] != path_root[v]) {
+      if (dep[path_root[u]] > dep[path_root[v]])
+        std::swap(u, v);
+      res += segment_tree->sum(pos[path_root[v]], pos[v]);
+      v = par[path_root[v]];
+    }
+    res += segment_tree->sum(pos[u], pos[v]);
+    return res;
+  }
   void update(int u, int v, int c) {
     for (; path_root[u] != path_root[v];
            v = par[path_root[v]]) {
       if (dep[path_root[u]] > dep[path_root[v]])
         std::swap(u, v);
-      segment_tree->increase(pos[path_root[v]], pos[v], c);  }
-    segment_tree->increase(pos[u], pos[v], c);  }  };
+      segment_tree->increase(pos[path_root[v]], pos[v], c);
+    }
+    segment_tree->increase(pos[u], pos[v], c);
+  }
+};

@@ -6,6 +6,7 @@ struct union_find {
     if (xp == yp) return false;
     if (p[xp] > p[yp]) swap(xp,yp);
     p[xp] += p[yp], p[yp] = xp;
-    return true; }
-  int size(int x) { return -p[find(x)]; } };
-// vim: cc=60 ts=2 sts=2 sw=2:
+    return true;
+  }
+  int size(int x) { return -p[find(x)]; }
+};
