@@ -64,7 +64,8 @@ public:
       return get(v->l, key);
     else if (key > get_size(v->l))
       return get(v->r, key - get_size(v->l) - 1);
-    return v->node_val;  }
+    return v->node_val;
+  }
   int get(int key) { return get(root, key); }
   void insert(Node item, int key) {
     Node l, r;
