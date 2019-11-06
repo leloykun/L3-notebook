@@ -1,7 +1,7 @@
 struct segtree {
   int i, j, val, temp_val = 0;
   segtree *l, *r;
-  segtree(int *ar, int _i, int _j) : i(_i), j(_j) {
+  segtree(vi &ar, int _i, int _j) : i(_i), j(_j) {
     if (i == j) {
       val = ar[i];
       l = r = NULL;

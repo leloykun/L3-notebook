@@ -1,7 +1,7 @@
 struct segtree {
   int n;
   int *vals;
-  segtree(int *ar, int n) {
+  segtree(vi &ar, int n) {
     this->n = n;
     vals = new int[2*n];
     for (int i = 0; i < n; ++i)
@@ -10,7 +10,7 @@ struct segtree {
       vals[i] = vals[i<<1] + vals[i<<1|1];
   }
   void update(int i, int v) {
-    for (vals[i += n] = v; i > 1; i >>= 1)
+    for (vals[i += n] += v; i > 1; i >>= 1)
       vals[i>>1] = vals[i] + vals[i^1];
   }
   int query(int l, int r) {

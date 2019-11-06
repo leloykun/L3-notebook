@@ -1,6 +1,5 @@
 struct graph {
-  int n;
-  int **mat;
+  int n, **mat;
   graph(int n) {
     this->n = n;
     mat = new int*[n];
@@ -13,6 +12,6 @@ struct graph {
   }
   void add_edge(int u, int v, int w) {
     mat[u][v] = std::min(mat[u][v], w);
-  /*mat[v][u] = std::min(mat[v][u], w);*/
+    // mat[v][u] = std::min(mat[v][u], w);
   }
 };

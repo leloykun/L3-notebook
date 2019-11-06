@@ -3,8 +3,8 @@ struct union_find {
   int find(int x) { return p[x] < 0 ? x : p[x] = find(p[x]); }
   bool unite(int x, int y) {
     int xp = find(x), yp = find(y);
-    if (xp == yp) return false;
-    if (p[xp] > p[yp]) swap(xp,yp);
+    if (xp == yp)       return false;
+    if (p[xp] > p[yp])  std::swap(xp,yp);
     p[xp] += p[yp], p[yp] = xp;
     return true;
   }

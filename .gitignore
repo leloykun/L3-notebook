@@ -26,7 +26,6 @@
 *.dvi
 
 # Other
-/tester/*
 /reference/*
 /_code
 /_minted-notebook

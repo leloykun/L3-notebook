@@ -92,7 +92,7 @@ public:
     root = merge(l1, r1);
     return res;
   }
-  int update(int a, int b, int delta) {
+  void update(int a, int b, int delta) {
     Node l1, r1;
     split(root, b+1, l1, r1);
     Node l2, r2;

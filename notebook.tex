@@ -87,35 +87,40 @@
 \section{Code Templates}
 	\code{header.cpp}
 \section{Data Structures}
-	\subsection{Fenwick Tree}
+  \subsection{Union Find}
+    \code{data-structures/union_find.cpp}
+  \subsection{Fenwick Tree}
 		\subsubsection{Fenwick Tree w/ Point Queries}
 			\code{data-structures/fenwick.cpp}
     \subsubsection{Fenwick Tree w/ Max Queries}
       \code{data-structures/fenwick_max.cpp}
-	\subsection{Segment Tree}
-		\subsubsection{Recursive Segment Tree (Point-update)}
-			\code{data-structures/segtree_rec.cpp}
-		\subsubsection{Iterative Segment Tree (Point-update \and operation can be non-commutative)}
-			\code{data-structures/segtree_iter.cpp}
-		\subsubsection{Lazy Segment Tree (Range-update)}
-			\code{data-structures/segtree_lazy.cpp}
-		\subsubsection{Persistent Segmentr Tree (Point-update)}
-			\code{data-structures/segtree_persistent.cpp}
+  \subsection{Segment Tree}
+    \subsubsection{Recursive, Point-update Segment Tree}
+      \code{data-structures/segtree_rec.cpp}
+    \subsubsection{Iterative, Point-update Segment Tree}
+      \code{data-structures/segtree_iter.cpp}
+    \subsubsection{Pointer-based, Range-update Segment Tree}
+      \code{data-structures/segtree_pointer_lazy.cpp}
+    \subsubsection{Array-based, Range-update Segment Tree}
+      \code{data-structures/segtree_array_lazy.cpp}
+    \subsubsection{Persistent Segment Tree (Point-update)}
+      \code{data-structures/segtree_persistent.cpp}
+    \subsubsection{2D Segment Tree}
+      \code{data-structures/segtree_2d.cpp}
+  \subsection{Treap}
+		\subsubsection{Explicit Treap}
+		\subsubsection{Implicit Treap}
+			\code{data-structures/treap_implicit.cpp}
+		\subsubsection{Persistent Treap}
+  \subsection{Splay Tree}
+    \code{data-structures/splay.cpp}
+	\subsection{Ordered Statistics Tree}
+    \code{data-structures/ordered_statistics_tree.cpp}
 	\subsection{Sparse Table}
     \subsubsection{1D Sparse Table}
       \code{data-structures/sparse.cpp}
     \subsubsection{2D Sparse Table}
       \code{data-structures/sparse_2d.cpp}
-	\subsection{Sqrt Decomposition}
-	\subsection{Treap}
-		\subsubsection{Explicit Treap}
-		\subsubsection{Implicit Treap}
-			\code{data-structures/treap_implicit.cpp}
-		\subsubsection{Persistent Treap}
-	\subsection{Ordered Statistics Tree}
-    \code{data-structures/ordered_statistics_tree.cpp}
-	\subsection{Union Find}
-		\code{data-structures/union_find.cpp}
 \section{Graphs}
 	Using adjacency list:
 	\code{graphs/graph_template_adjlist.cpp}
@@ -125,28 +130,44 @@
 	\code{graphs/graph_template_edgelist.cpp}
 	\subsection{Single-Source Shortest Paths}
 		\subsubsection{Dijkstra}
-			\code{graphs/dijkstra.cpp}
+			\code{graphs/shortest_paths/dijkstra.cpp}
 		\subsubsection{Bellman-Ford}
-			\code{graphs/bellman_ford.cpp}
+			\code{graphs/shortest_paths/bellman_ford.cpp}
     \subsubsection{SPFA}
+      \code{graphs/shortest_paths/spfa.cpp}
 	\subsection{All-Pairs Shortest Paths}
 		\subsubsection{Floyd-Washall}
-			\code{graphs/floyd_warshall.cpp}
+			\code{graphs/shortest_paths/floyd_warshall.cpp}
 	\subsection{Strongly Connected Components}
 		\subsubsection{Kosaraju}
-      \code{graphs/Kosaraju.cpp}
+      \code{graphs/scc/kosaraju.cpp}
+    \subsubsection{Tarjan's Offline Algorithm}
+      \code{graphs/scc/tarjan.cpp}
+  \subsection{Minimum Mean Weight Cycle}
+    Run this for each strongly connected component
+    \code{graphs/min_mean_cycle.cpp}
 	\subsection{Cut Points and Bridges}
+    \code{graphs/bridges_artics.cpp}
 	\subsection{Biconnected Components}
 		\subsubsection{Bridge Tree}
 		\subsubsection{Block-Cut Tree}
 	\subsection{Minimum Spanning Tree}
 		\subsubsection{Kruskal}
+      \code{graphs/mst/kruskal.cpp}
 		\subsubsection{Prim}
-	\subsection{Topological Sorting}
-	\subsection{Euler Path}
+      \code{graphs/mst/prim.cpp}
+	\subsection{Euler Path/Cycle}
+    \subsubsection{Euler Path/Cycle in a Directed Graph}
+      \code{graphs/euler_path.cpp}
+    \subsubsection(Euler Path/Cycle in an Undirected Graph)
+      \code{graphs/euler_path_undirected.cpp}
 	\subsection{Bipartite Matching}
 		\subsubsection{Alternating Paths Algorithm}
+      \code{graphs/bipartite_matching/bipartite_matching.cpp}
 		\subsubsection{Hopcroft-Karp Algorithm}
+      \code{graphs/bipartite_matching/hopcroft_karp.cpp}
+    \subsubsection{Minimum Vertex Cover in Bipartite Graphs}
+      \code{graphs/bipartite_matching/bipartite_mvc.cpp}
 	\subsection{Maximum Flow}
 		\subsubsection{Edmonds-Karp}
 			\code{graphs/max_flow/edmonds_karp.cpp}
@@ -154,16 +175,112 @@
 			\code{graphs/max_flow/dinic.cpp}
   \subsection{All-pairs Maximum Flow}
     \subsubsection{Gomory-Hu}
+      \code{graphs/max_flow/gomory_hu_tree.cpp}
+  \subsection{Minimum Arborescence}
+    Given a weighted directed graph, finds a subset of edges of minimum
+    total weight so that there is a unique path from the root $r$ to each
+    vertex. Returns a vector of size $n$, where the $i$th element is the
+    edge for the $i$th vertex. The answer for the root is undefined!
+    \code{graphs/arborescence.cpp}
+  \subsection{Blossom algorithm}
+    Finds a maximum matching in an arbitrary graph in $O(|V|^4)$ time. Be
+    vary of loop edges.
+    \code{graphs/blossom.cpp}
+  \subsection{Maximum Density Subgraph}
+    Given (weighted) undirected graph $G$. Binary search density. If $g$ is
+    current density, construct flow network: $(S, u, m)$, $(u, T,
+    m+2g-d_u)$, $(u,v,1)$, where $m$ is a large constant (larger than sum
+    of edge weights). Run floating-point max-flow. If minimum cut has empty
+    $S$-component, then maximum density is smaller than $g$, otherwise it's
+    larger. Distance between valid densities is at least $1/(n(n-1))$. Edge
+    case when density is $0$. This also works for weighted graphs by
+    replacing $d_u$ by the weighted degree, and doing more iterations (if
+    weights are not integers).
+  \subsection{Maximum-Weight Closure}
+    Given a vertex-weighted directed graph $G$. Turn the graph into a flow
+    network, adding weight $\infty$ to each edge. Add vertices $S,T$. For
+    each vertex $v$ of weight $w$, add edge $(S,v,w)$ if $w\geq 0$, or edge
+    $(v,T,-w)$ if $w<0$. Sum of positive weights minus minimum $S-T$ cut is
+    the answer. Vertices reachable from $S$ are in the closure. The
+    maximum-weight closure is the same as the complement of the
+    minimum-weight closure on the graph with edges reversed.
+  \subsection{Maximum Weighted Independent Set in a Bipartite Graph}
+    This is the same as the minimum weighted vertex cover. Solve this by
+    constructing a flow network with edges $(S,u,w(u))$ for $u\in L$,
+    $(v,T,w(v))$ for $v\in R$ and $(u,v,\infty)$ for $(u,v)\in E$. The
+    minimum $S,T$-cut is the answer. Vertices adjacent to a cut edge are
+    in the vertex cover.
+  \subsection{Synchronizing word problem}
+    A DFA has a synchronizing word (an input sequence that moves all states
+    to the same state) iff.\ each pair of states has a synchronizing word.
+    That can be checked using reverse DFS over pairs of states. Finding the
+    shortest synchronizing word is NP-complete.
+  \subsection{Max flow with lower bounds on edges}
+    % TODO: Test this!
+    Change edge $(u,v,l\leq f\leq c)$ to $(u,v,f\leq c-l)$. Add edge
+    $(t,s,\infty)$. Create super-nodes $S$, $T$. Let $M(u) = \sum_{v}
+    l(v,u) - \sum_{v} l(u,v)$. If $M(u)<0$, add edge $(u,T,-M(u))$, else
+    add edge $(S,u,M(u))$. Max flow from $S$ to $T$. If all edges from $S$
+    are saturated, then we have a feasible flow. Continue running max flow
+    from $s$ to $t$ in original graph.
+    % TODO: Was there something similar for vertex capacities that we should add?
+  \subsection{Tutte matrix for general matching}
+    Create an $n\times n$ matrix $A$. For each edge $(i,j)$, $i<j$, let
+    $A_{ij} = x_{ij}$ and $A_{ji} = -x_{ij}$. All other entries are $0$.
+    The determinant of $A$ is zero iff.\ the graph has a perfect matching.
+    A randomized algorithm uses the Schwartz--Zippel lemma to check if it is
+    zero.
   \subsection{Heavy Light Decomposition}
     \code{graphs/heavy_light_decomposition.cpp}
 	\subsection{Centroid Decomposition}
+    \code{graphs/centroid_decomposition.cpp}
 	\subsection{Least Common Ancestor}
 		\subsubsection{Binary Lifting}
       \code{graphs/lca/binary_lifting.cpp}
-		\subsubsection{Tarjan's Offline Algorithm}
+  \subsection{Counting Spanning Trees}
+    Kirchoff's Theorem: The number of spanning trees of any graph is the
+    determinant of any cofactor of the Laplacian matrix in $O(n^3)$.
+    \begin{enumerate}
+        \item Let $A$ be the adjacency matrix.
+        \item Let $D$ be the degree matrix (matrix with vertex degrees on the diagonal).
+        \item Get $D-A$ and delete exactly one row and column. Any row and
+        column will do. This will be the cofactor matrix.
+        \item Get the determinant of this cofactor matrix using Gauss-Jordan.
+        \item $\text{Spanning Trees} = \left|\mathrm{cofactor}(D-A) \right|$
+    \end{enumerate}
+  \subsection{Erd\H{o}s-Gallai Theorem}
+    A sequence of non-negative integers $d_1 \ge \cdots \ge d_n$ can be represented as the
+    degree sequence of finite simple graph on $n$ vertices if and only if $d_1 + \cdots + d_n$ is
+    even and the following holds for $1 \le k \le n$:
+    \[
+    \sum_{i=1}^n d_i \le k(k-1) + \sum_{i=k+1}^n \min\left(d_i, k\right)
+    \]
+  \subsection{Tree Isomorphism}
+    \code{graphs/tree_isomorphism.cpp}
 \section{Strings}
-	\subsection{Z-algorithm}
-	\subsection{Trie}
+  \subsection{Knuth-Morris-Pratt}
+    Count and find all matches of string $f$ in string $s$ in $O(n)$ time.
+    \code{strings/kmp.cpp}
+  \subsection{Suffix Array}
+    Construct a sorted catalog of all substrings of $s$ in $O(n \log n)$ time using counting sort.
+    \code{strings/suffix-array.cpp}
+  \subsection{Longest Common Prefix}
+    Find the length of the longest common prefix for every substring in $O(n)$.
+    \code{strings/lcp.cpp}
+  \subsection{Aho-Corasick Trie}
+    Find all multiple pattern matches in $O(n)$ time. This is KMP for multiple strings.
+    \code{strings/aho-corasick-trie.java}
+  \subsection{Palindromic Tree}
+    Find lengths and frequencies of all palindromic substrings of a string in $O(n)$ time.
+
+    Theorem: there can only be up to $n$ unique palindromic substrings for any string.
+    \code{strings/palindromic-tree.cpp}
+  \subsection{Z Algorithm}
+    Find the longest common prefix of all substrings of $s$ with itself in $O(n)$ time.
+    \code{strings/z.cpp}
+  \subsection{Booth's Minimum String Rotation}
+    Booth's Algo: Find the index of the lexicographically least string rotation in $O(n)$ time.
+    \code{strings/booth.cpp}
 	\subsection{Hashing}
     \subsubsection{Polynomial Hashing}
       \code{strings/polynomial_hashing.cpp}
@@ -171,41 +288,252 @@
 	\subsection{Longest Common Subsequence}
 	\subsection{Longest Increasing Subsequence}
 	\subsection{Traveling Salesman}
-\section{Mathematics}
-	\subsection{Special Data Types}
-		\subsubsection{Fraction}
-		\subsubsection{BigInteger}
-		\subsubsection{Matrix}
-		\subsubsection{Dates}
-	\subsection{Binomial Coefficients}
-	\subsection{Euclidean Algorithm}
-	\subsection{Primality Test}
-		\subsubsection{Optimized Brute Force}
-		\subsubsection{Miller-Rabin}
-		\subsubsection{Pollard's Rho Algorithm}
-	\subsection{Sieve}
-		\subsubsection{Sieve of Eratosthenes}
-		\subsubsection{Divisor Sieve (Modified Sieve of Eratosthenes)}
-		\subsubsection{Phi Sieve}
-	\subsection{Phi Function}
-	\subsection{Modular Exponentiation}
-    \code{math/fast_exp.cpp}
-	\subsection{Modular Multiplicative Inverse}
-    \code{math/mod_inverse.cpp}
-	\subsection{Chinese Remainder Theorem}
-    \code{math/chinese_remainder_theorem.cpp}
-	\subsection{Numeric Integration (Simpson's Rule)}
-	\subsection{Fast Fourier Transform}
-	\subsection{Josephus Problem}
-	\subsection{Number of Integer Points Below a Line}
+\section{Number Theory}
+	\subsection{Eratosthenes Prime Sieve}
+    \code{numtheory/prime-sieve.cpp}
+  \subsection{Divisor Sieve}
+    \code{numtheory/divisor-sieve.cpp}
+  \subsection{Number/Sum of Divisors}
+    If a number $n$ is prime factorized where $n = {p_1}^{e_1} \times {p_2}^{e_2} \times \cdots \times {p_k}^{e_k}$, where $\sigma_0$ is the number of divisors while $\sigma_1$ is the sum of divisors:
+    \[
+    \sum_{d\mid n} d^k = \sigma_k (n) = \prod \frac{{p_i}^{k(e_i)+1}-1}{p_i -1}
+    \]
+    \[
+    \text{Product: } \prod_{d\mid n} d = n^{\frac{\sigma_1 (n)}{2}}
+    \]
+  \subsection{M\"{o}bius Sieve}
+    The M\"{o}bius function $\mu$ is the M\"{o}bius inverse of $e$ such that $e(n) = \sum_{d\mid n} \mu(d)$.
+    \code{numtheory/moebius-sieve.cpp}
+  \subsection{M\"{o}bius Inversion}
+    Given arithmetic functions $f$ and $g$:
+    \[
+    g(n) = \sum_{d\mid n} f(d) \quad \Leftrightarrow \quad f(n) = \sum_{d\mid n} \mu(d)\; g\left(\frac{n}{d}\right)
+    \]
+  \subsection{GCD Subset Counting}
+    Count number of subsets $S \subseteq A$ such that $\gcd(S) = g$ (modifiable).
+    \code{numtheory/gcd-subsets.cpp}
+  \subsection{Euler Totient}
+    Counts all integers from 1 to $n$ that are relatively prime to $n$ in $O(\sqrt{n})$ time.
+    \code{numtheory/totient.cpp}
+  \subsection{Euler Phi Sieve}
+    Sieve version of Euler totient, runs in $O(N \log N)$ time. Note that $n = \sum_{d\mid n} \varphi(d)$.
+    \code{numtheory/phi-sieve.cpp}
+  \subsection{Extended Euclidean}
+    Assigns $x,y$ such that $ax + by = \gcd(a,b)$ and returns $\gcd(a,b)$.
+    \code{numtheory/extended-euclidean.cpp}
+  \subsection{Modular Inverse}
+    Find unique $x$ such that $ax \equiv 1 \pmod m$. Returns 0 if no unique solution is found. \underline{Please use modulo solver for the non-unique case.}
+    \code{numtheory/modinv.cpp}
+  \subsection{Modulo Solver}
+    Solve for values of $x$ for $ax \equiv b \pmod m$. Returns $(-1,-1)$ if there is no solution. Returns a pair $(x, M)$ where solution is $x \bmod M$.
+    \code{numtheory/modsolver.cpp}
+  \subsection{Linear Diophantine}
+    Computes integers $x$ and $y$ such that $ax+by=c$, returns $(-1,-1)$ if no solution. \underline{Tries to return positive integer answers for $x$ and $y$ if possible.}
+    \code{numtheory/linear-diophantine.cpp}
+  \subsection{Chinese Remainder Theorem}
+    Solves linear congruence $x \equiv b_i \pmod {m_i}$. Returns $(-1,-1)$ if there is no solution. Returns a pair $(x, M)$ where solution is $x \bmod M$.
+    \code{numtheory/chinese-remainder.cpp}
+    \subsubsection{Super Chinese Remainder}
+      Solves linear congruence $a_i x \equiv b_i \pmod {m_i}$. Returns $(-1,-1)$ if there is no solution.
+      \code{numtheory/super-crt.cpp}
+\section{Algebra}
+  \subsection{Fast Fourier Transform}
+    Compute the Discrete Fourier Transform (DFT) of a polynomial in $O(n \log n)$ time.
+    \code{algebra/fft.cpp}
+  \subsection{FFT Polynomial Multiplication}
+    Multiply integer polynomials $a, b$ of size $an, bn$ using FFT in $O(n \log n)$. Stores answer in an array $c$, rounded to the nearest integer (or double).
+    \code{algebra/fft-poly-mul.cpp}
+  \subsection{Polynomial Long Division}
+    Divide two polynomials $A$ and $B$ to get $Q$ and $R$, where $\frac{A}{B} = Q + \frac{R}{B}$.
+    \code{algebra/poly-long-div.cpp}
+  \subsection{Matrix Multiplication}
+    Multiplies matrices $A_{p\times q}$ and $B_{q\times r}$ in $O(n^3)$ time, modulo \texttt{MOD}.
+    \code{algebra/matmul.java}
+  \subsection{Matrix Power}
+    Computes for $B^e$ in $O(n^3 \log e)$ time. Refer to Matrix Multiplication.
+    \code{algebra/matpow.java}
+  \subsection{Fibonacci Matrix}
+    Fast computation for $n$th Fibonacci $\left\{F_1,F_2,\ldots,F_n \right\}$ in $O(\log n)$:
+    \[
+    \begin{bmatrix}
+        F_n \\
+        F_{n-1}
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+        1 & 1 \\
+        1 & 0
+    \end{bmatrix}^n
+    \times
+    \begin{bmatrix}
+        F_2 \\
+        F_1
+    \end{bmatrix}
+    \]
+  \subsection{Gauss-Jordan/Matrix Determinant}
+    Row reduce matrix $A$ in $O(n^3)$ time. Returns \texttt{true} if a solution exists.
+    \code{algebra/gauss-jordan.java}
+\section{Combinatorics}
+  \subsection{Lucas Theorem}
+    Compute $\binom{n}{k} \bmod{p}$ in $O(p + \log_p n)$ time, where $p$ is a prime.
+    \code{combs/lucas.cpp}
+  \subsection{Granville's Theorem}
+    Compute $\binom{n}{k} \bmod{m}$ (for any $m$) in $O(m^2 \log^2 n)$ time.
+    \code{combs/granville.py}
+  \subsection{Derangements}
+    Compute the number of permutations with $n$ elements such that no element is at their original position:
+    \[
+    D(n) = (n-1) \left( D(n-1) + D(n-2) \right) =  n D(n-1) + (-1)^n
+    \]
+    % \subsection{Next Permutation}
+    % \subsection{Next Combination}
+    % \subsection{Next Arrangement}
+    % \subsection{Next Partition}
+    \subsection{Factoradics}
+    Convert a permutation of $n$ items to factoradics and vice versa in $O(n \log n)$.
+    \code{combs/factoradics.cpp}
+  \subsection{$k$th Permutation}
+    Get the next $k$th permutation of $n$ items, if exists, using factoradics. All values should be from $0$ to $n-1$. Use factoradics methods as discussed above.
+    \code{combs/kth-permutation.cpp}
+  \subsection{Catalan Numbers}
+    \[
+        C_n = \frac{1}{n+1}\binom{2n}{n} =  \binom{2n}{n}-\binom{2n}{n+1}
+    \]
+    \begin{enumerate}
+      \item The number of non-crossing partitions of an $n$-element set
+      \item The number of expressions with $n$ pairs of parentheses
+      \item The number of ways $n+1$ factors can be parenthesized
+      \item The number of full binary trees with $n+1$ leaves
+      \item The number of monotonic lattice paths of an $n \times n$ grid (5-SAT problem)
+      \item The number of triangulations of a convex polygon with $n+2$ sides (non-rotational)
+      \item The number of permutations $\{1, \ldots, n\}$ without a 3-term increasing subsequence
+      \item The number of ways to form a mountain range with $n$ ups and $n$ downs
+    \end{enumerate}
+  \subsection{Stirling Numbers}
+    $s_1$: Count the number of permutations of $n$ elements with $k$ disjoint cycles
+
+    $s_2$: Count the ways to partition a set of $n$ elements into $k$ nonempty subsets
+    \[
+    s_1(n,k) = \begin{cases}
+        1 & n = k = 0 \\
+        s_1(n-1,k-1) - (n-1) s_1(n-1,k) & n,k>0 \\
+        0 & \text{elsewhere}
+    \end{cases}
+    \]
+    \[
+    s_2(n,k) = \begin{cases}
+        1 & n = k = 0 \\
+        s_2(n-1,k-1) + k s_2(n-1,k) & n,k>0 \\
+        0 & \text{elsewhere}
+    \end{cases}
+    \]
+  \subsection{Partition Function}
+    Pregenerate the number of partitions of positive integer $n$ with $n$ positive addends.
+    \[
+    p(n,k) = \begin{cases}
+        1 & n = k = 0 \\
+        0 & n < k \\
+        p(n-1,k-1) + p(n-k,k) & n \ge k
+    \end{cases}
+    \]
 \section{Geometry}
-	\subsection{Primitives}
-	\subsection{Lines}
-	\subsection{Circles}
-	\subsection{Polygons}
-	\subsection{Convex Hull (Graham's Scan)}
-	\subsection{Closest Pair of Points}
-	\subsection{Rectilinear Minimum Spanning Tree}
+  \code{geom/compgeom.cpp}
+	\subsection{Dots and Cross Products}
+    \code{geom/dot-cross.cpp}
+  \subsection{Angles and Rotations}
+    \code{geom/angles-rots.cpp}
+	\subsection{Spherical Coordinates}
+    \[
+        \begin{array}{cc}
+            x = r \cos \theta \cos \phi & r = \sqrt{x^2 + y^2 + z^2} \\
+            y = r \cos \theta \sin \phi & \theta = \cos^{-1} x/r \\
+            z = r \sin \theta & \phi = \mathrm{atan2}(y,x)
+        \end{array}
+    \]
+	\subsection{Point Projection}
+    \code{geom/pt-proj.cpp}
+	\subsection{Great Circle Distance}
+    \code{geom/great-circle.cpp}
+	\subsection{Point/Line/Plane Distances}
+    \code{geom/dists.cpp}
+	\subsection{Intersections}
+    \subsubsection{Line-Segment Intersection}
+      Get intersection points of 2D lines/segments $\overline{ab}$ and $\overline{cd}$.
+      \code{geom/line-seg-isect.cpp}
+    \subsubsection{Circle-Line Intersection}
+      Get intersection points of circle at center $c$, radius $r$, and line $\overline{ab}$.
+      \code{geom/circ-line-isect.cpp}
+    \subsubsection{Circle-Circle Intersection}
+      \code{geom/circ-circ-isect.cpp}
+	\subsection{Polygon Areas}
+    Find the area of any 2D polygon given as points in $O(n)$.
+    \code{geom/poly-area.cpp}
+    \subsubsection{Triangle Area}
+      Find the area of a triangle using only their lengths. Lengths must be valid.
+      \code{geom/tri-area.cpp}
+    \subsubsection*{Cyclic Quadrilateral Area}
+      Find the area of a cyclic quadrilateral using only their lengths. A quadrilateral is
+      cyclic if its inner angles sum up to $360^\circ$.
+      \code{geom/cyc-quad-area.cpp}
+  \subsection{Polygon Centroid}
+    Get the centroid/center of mass of a polygon in $O(m)$.
+    \code{geom/poly-centroid.cpp}
+  \subsection{Convex Hull}
+    Get the convex hull of a set of points using Graham-Andrew's scan. This sorts the
+    points at $O(n \log n)$, then performs the Monotonic Chain Algorithm at $O(n)$.
+    \code{geom/convex-hull.cpp}
+  \subsection{Point in Polygon}
+    Check if a point is strictly inside (or on the border) of a polygon in $O(n)$.
+    \code{geom/pt-in-poly.cpp}
+  \subsection{Cut Polygon by a Line}
+    Cut polygon by line $\overline{ab}$ to its left in $O(n)$, such that $\angle abp$ is counter-clockwise.
+    \code{geom/cut-poly.cpp}
+  \subsection{Triangle Centers}
+    \code{geom/tri-centers.cpp}
+  \subsection{Convex Polygon Intersection}
+    Get the intersection of two convex polygons in $O(n^2)$.
+    \code{geom/convex-poly-isect.cpp}
+  \subsection{Pick's Theorem for Lattice Points}
+    Count points with integer coordinates inside and on the boundary of a polygon in
+    $O(n)$ using Pick's theorem: $\text{Area} = I + B/2 - 1$.
+    \code{geom/picks.cpp}
+  \subsection{Minimum Enclosing Circle}
+    Get the minimum bounding ball that encloses a set of points (2D or 3D) in $\Theta{n}$.
+    \code{geom/min-enclosing-circ.cpp}
+  \subsection{Shamos Algorithm}
+    Solve for the polygon diameter in $O(n \log n)$.
+    \code{geom/shamos.cpp}
+  \subsection{$k$D Tree}
+    Get the $k$-nearest neighbors of a point within pruned radius in $O(k \log k \log n)$.
+    \code{geom/kd-tree.cpp}
+  \subsection{Line Sweep (Closest Pair)}
+    Get the closest pair distance of a set of points in $O(n \log n)$ by sweeping a line and
+    keeping a bounded rectangle. Modifiable for other metrics such as Minkowski and
+    Manhattan distance. For external point queries, see $k$D Tree.
+    \code{geom/closest-pair.cpp}
+  \subsection{Line upper/lower envelope}
+    To find the upper/lower envelope of a collection of lines $a_i+b_i x$,
+    plot the points $(b_i,a_i)$, add the point $(0,\pm \infty)$ (depending
+    on if upper/lower envelope is desired), and then find the convex hull.
+  \subsection{Formulas}
+    Let $a = (a_x, a_y)$ and $b = (b_x, b_y)$ be two-dimensional vectors.
+    \begin{itemize}
+      \item $a\cdot b = |a||b|\cos{\theta}$, where $\theta$ is the angle
+        between $a$ and $b$.
+      \item $a\times b = |a||b|\sin{\theta}$, where $\theta$ is the
+        signed angle between $a$ and $b$.
+      \item $a\times b$ is equal to the area of the parallelogram with
+        two of its sides formed by $a$ and $b$. Half of that is the
+        area of the triangle formed by $a$ and $b$.
+      \item The line going through $a$ and $b$ is $Ax+By=C$ where $A=b_y-a_y$, $B=a_x-b_x$, $C=Aa_x+Ba_y$.
+      \item Two lines $A_1x+B_1y=C_1$, $A_2x+B_2y=C_2$ are parallel iff.\ $D=A_1B_2-A_2B_1$ is zero. Otherwise their unique intersection is $(B_2C_1-B_1C_2,A_1C_2-A_2C_1)/D$.
+      \item \textbf{Euler's formula:} $V - E + F = 2$
+      \item Side lengths $a,b,c$ can form a triangle iff.\ $a+b>c$, $b+c>a$ and $a+c>b$.
+      \item Sum of internal angles of a regular convex $n$-gon is $(n-2)\pi$.
+      \item \textbf{Law of sines:} $\frac{a}{\sin A} = \frac{b}{\sin B} = \frac{c}{\sin C}$
+      \item \textbf{Law of cosines:} $b^2 = a^2 + c^2 - 2ac\cos B$
+      \item Internal tangents of circles $(c_1,r_1), (c_2,r_2)$ intersect at $(c_1r_2+c_2r_1)/(r_1+r_2)$, external intersect at $(c_1r_2-c_2r_1)/(r_1+r_2)$.
+    \end{itemize}
 \section{Other Algorithms}
 	\subsection{Coordinate Compression}
 	\subsection{2SAT}

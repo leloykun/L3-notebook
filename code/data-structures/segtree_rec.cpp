@@ -1,7 +1,7 @@
 struct segtree {
   int i, j, val;
   segtree *l, *r;
-  segtree(int *ar, int _i, int _j) : i(_i), j(_j) {
+  segtree(vi &ar, int _i, int _j) : i(_i), j(_j) {
     if (i == j) {
       val = ar[i];
       l = r = NULL;
@@ -13,8 +13,8 @@ struct segtree {
     }
   }
   void update(int _i, int _val) {
-    if (i == _i and _i == j) {
-      val = _val;
+    if (_i <= i and j <= _i) {
+      val += _val;
     } else if (_i < i or j < _i) {
       // do nothing
     } else {

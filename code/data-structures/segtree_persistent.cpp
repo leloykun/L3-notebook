@@ -6,7 +6,7 @@ struct segtree {
     this->n = n;
     nodes = new node[capacity];
   }
-  int build (int *ar, int l, int r) {
+  int build (vi &ar, int l, int r) {
     if (l > r)  return -1;
     int id = node_cnt++;
     nodes[id].l = l;

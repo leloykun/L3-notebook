@@ -2,10 +2,10 @@ struct fenwick {
   vi ar;
   fenwick(vi &_ar) : ar(_ar.size(), 0) {
     for (int i = 0; i < ar.size(); ++i) {
-      ar[i] += _ar[i];
+      ar[i] = std::max(ar[i], _ar[i]);
       int j = i | (i+1);
       if (j < ar.size())
-        ar[j] += ar[i];
+        ar[j] = std::max(ar[j], ar[i]);
     }
   }
   void set(int i, int v) {
