@@ -121,6 +121,9 @@
       \code{data-structures/sparse.cpp}
     \subsubsection{2D Sparse Table}
       \code{data-structures/sparse_2d.cpp}
+  \subsection{Misof Tree}
+    A simple tree data structure for inserting, erasing, and querying the nth largest element.
+    \code{data-structures/misof_tree.cpp}
 \section{Graphs}
 	Using adjacency list:
 	\code{graphs/graph_template_adjlist.cpp}
@@ -261,6 +264,8 @@
   \subsection{Knuth-Morris-Pratt}
     Count and find all matches of string $f$ in string $s$ in $O(n)$ time.
     \code{strings/kmp.cpp}
+  \subsection{Trie}
+    \code{strings/trie.cpp}
   \subsection{Suffix Array}
     Construct a sorted catalog of all substrings of $s$ in $O(n \log n)$ time using counting sort.
     \code{strings/suffix-array.cpp}
@@ -284,10 +289,6 @@
 	\subsection{Hashing}
     \subsubsection{Polynomial Hashing}
       \code{strings/polynomial_hashing.cpp}
-\section{Dynamic Programming}
-	\subsection{Longest Common Subsequence}
-	\subsection{Longest Increasing Subsequence}
-	\subsection{Traveling Salesman}
 \section{Number Theory}
 	\subsection{Eratosthenes Prime Sieve}
     \code{numtheory/prime-sieve.cpp}
@@ -321,6 +322,9 @@
   \subsection{Extended Euclidean}
     Assigns $x,y$ such that $ax + by = \gcd(a,b)$ and returns $\gcd(a,b)$.
     \code{numtheory/extended-euclidean.cpp}
+  \subsection{Modular Exponentiation}
+    Find $b^e \pmod m$ in $O(log e)$ time.
+    \code{numtheory/mod_pow.cpp}
   \subsection{Modular Inverse}
     Find unique $x$ such that $ax \equiv 1 \pmod m$. Returns 0 if no unique solution is found. \underline{Please use modulo solver for the non-unique case.}
     \code{numtheory/modinv.cpp}
@@ -336,6 +340,16 @@
     \subsubsection{Super Chinese Remainder}
       Solves linear congruence $a_i x \equiv b_i \pmod {m_i}$. Returns $(-1,-1)$ if there is no solution.
       \code{numtheory/super-crt.cpp}
+  \subsection{Primitive Root}
+    \code{numtheory/primitive_root.cpp}
+  \subsection{Josephus}
+    Last man standing out of $n$ if every $kth$ is killed. Zero-based, and does not kill $0$ on first pass.
+    \code{numtheory/josephus.cpp}
+  \subsection{Number of Integer Points under a Lines}
+    Count the number of integer solutions to $Ax+By \leq C$, $0 \leq x \leq n$,
+    $0 \leq y$. In other words, evaluate the sum $\sum_{x=0}^n\left\lfloor\dfrac{C-Ax}{B}+1\right\rfloor$.
+    To count all solutions, let $n = \left\lfloor\dfrac{c}{a}\right\rfloor$.
+    In any case, it must hold that $C-nA \geq 0$. Be very careful about overflows.
 \section{Algebra}
   \subsection{Fast Fourier Transform}
     Compute the Discrete Fourier Transform (DFT) of a polynomial in $O(n \log n)$ time.
@@ -343,6 +357,9 @@
   \subsection{FFT Polynomial Multiplication}
     Multiply integer polynomials $a, b$ of size $an, bn$ using FFT in $O(n \log n)$. Stores answer in an array $c$, rounded to the nearest integer (or double).
     \code{algebra/fft-poly-mul.cpp}
+  \subsection{Number Theoretic Transform}
+    Other possible moduli: $2 113 929 217 (2^{25}), 2 013 265 920 268 435 457 (2^{28}, with g = 5)$
+    \code{algebra/ntt.cpp}
   \subsection{Polynomial Long Division}
     Divide two polynomials $A$ and $B$ to get $Q$ and $R$, where $\frac{A}{B} = Q + \frac{R}{B}$.
     \code{algebra/poly-long-div.cpp}
@@ -535,12 +552,118 @@
       \item Internal tangents of circles $(c_1,r_1), (c_2,r_2)$ intersect at $(c_1r_2+c_2r_1)/(r_1+r_2)$, external intersect at $(c_1r_2-c_2r_1)/(r_1+r_2)$.
     \end{itemize}
 \section{Other Algorithms}
-	\subsection{Coordinate Compression}
-	\subsection{2SAT}
-	\subsection{Nth Permutation}
-	\subsection{Floyd's Cycle-Finding}
-	\subsection{Simulated Annealing}
-	\subsection{Hexagonal Grid Algorithms}
+  \subsection{2SAT}
+    \ifverbose
+    A fast 2SAT solver.
+    \fi
+    \code{other/two_sat.cpp}
+  \subsection{DPLL Algorithm}
+    A SAT solver that can solve a random 1000-variable SAT instance within a second.
+    \code{other/dpll.cpp}
+  \subsection{Dynamic Convex Hull Trick}
+    \code{other/dynamic-ch-trick.cpp}
+  \subsection{Stable Marriage}
+    \ifverbose
+    The Gale-Shapley algorithm for solving the stable marriage problem.
+    \fi
+    \code{other/stable_marriage.cpp}
+  \subsection{Algorithm X}
+    \ifverbose
+    An implementation of Knuth's Algorithm X, using dancing links. Solves the Exact Cover problem.
+    \fi
+    \code{other/algorithm_x.cpp}
+  \subsection{Matroid Intersection}
+    Computes the maximum weight and cardinality intersection of two
+    matroids, specified by implementing the required abstract methods, in
+    $O(n^3(M_1+M_2))$.
+    \code{other/matroid_intersection.cpp}
+  \subsection{$n$th Permutation}
+    \ifverbose
+    A very fast algorithm for computing the $n$th permutation of the list
+    $\{0,1,\ldots,k-1\}$.
+    \fi
+    \code{other/nth_permutation.cpp}
+  \subsection{Cycle-Finding}
+    \ifverbose
+    An implementation of Floyd's Cycle-Finding algorithm.
+    \fi
+    \code{other/floyds_algorithm.cpp}
+  \subsection{Longest Increasing Subsequence}
+    \code{other/lis.cpp}
+  \subsection{Dates}
+    \ifverbose
+    Functions to simplify date calculations.
+    \fi
+    \code{other/dates.cpp}
+  \subsection{Simulated Annealing}
+    An example use of Simulated Annealing to find a permutation of length $n$
+    that maximizes $\sum_{i=1}^{n-1}|p_i - p_{i+1}|$.
+    \code{other/simulated_annealing.cpp}
+  \subsection{Simplex}
+    \code{other/simplex.cpp}
+  \subsection{Fast Square Testing}
+    An optimized test for square integers.
+    \code{tricks/is_square.cpp}
+  \subsection{Fast Input Reading}
+    If input or output is huge, sometimes it is beneficial to optimize the
+    input reading/output writing. This can be achieved by reading all input
+    in at once (using fread), and then parsing it manually. Output can also
+    be stored in an output buffer and then dumped once in the end (using
+    fwrite). A simpler, but still effective, way to achieve speed is to use
+    the following input reading method.
+    \code{tricks/fast_input.cpp}
+  \subsection{128-bit Integer}
+    GCC has a 128-bit integer data type named \texttt{\_\_int128}. Useful
+    if doing multiplication of 64-bit integers, or something needing a
+    little more than 64-bits to represent. There's also
+    \texttt{\_\_float128}.
+  \subsection{Bit Hacks}
+    \code{tricks/snoob.cpp}
+\newpage
+\section{Other Combinatorics Stuff}
+  \begin{tabular}{@{}l|l|l@{}}
+  \toprule
+  Catalan	&	$C_0=1$, $C_n=\frac{1}{n+1}\binom{2n}{n} = \sum_{i=0}^{n-1}C_iC_{n-i-1} = \frac{4n-2}{n+1}C_{n-1}$  & \\
+  Stirling 1st kind & $\left[{0\atop 0}\right]=1$, $\left[{n\atop 0}\right]=\left[{0\atop n}\right]=0$, $\left[{n\atop k}\right]=(n-1)\left[{n-1\atop k}\right]+\left[{n-1\atop k-1}\right]$ & \#perms of $n$ objs with exactly $k$ cycles\\
+  Stirling 2nd kind & $\left\{{n\atop 1}\right\}=\left\{{n\atop n}\right\}=1$, $\left\{{n\atop k}\right\} = k \left\{{ n-1 \atop k }\right\} + \left\{{n-1\atop k-1}\right\}$ & \#ways to partition $n$ objs into $k$ nonempty sets\\
+  Euler	& $\left \langle {n\atop 0} \right \rangle = \left \langle {n\atop n-1} \right \rangle = 1 $, $\left \langle {n\atop k} \right \rangle = (k+1) \left \langle {n-1\atop {k}} \right \rangle + (n-k)\left \langle {{n-1}\atop {k-1}} \right \rangle$ & \#perms of $n$ objs with exactly $k$ ascents \\
+  Euler 2nd Order &  $\left \langle \!\!\left \langle {n\atop k} \right \rangle \!\! \right \rangle = (k+1) \left \langle \!\! \left \langle {{n-1}\atop {k}} \right \rangle \!\! \right \rangle +(2n-k-1)\left \langle \!\! \left \langle {{n-1}\atop {k-1}} \right \rangle  \!\! \right \rangle$ & \#perms of ${1,1,2,2,...,n,n}$ with exactly $k$ ascents \\
+  Bell & $B_1 = 1$, $B_n = \sum_{k=0}^{n-1} B_k \binom{n-1}{k} = \sum_{k=0}^n\left\{{n\atop k}\right\}$ & \#partitions of $1..n$ (Stirling 2nd, no limit on k)\\
+  \bottomrule
+  \end{tabular}
+
+  \vspace{10pt}
+  \begin{tabular}{ll}
+    \#labeled rooted trees & $n^{n-1}$ \\
+    \#labeled unrooted trees & $n^{n-2}$ \\
+    \#forests of $k$ rooted trees & $\frac{k}{n}\binom{n}{k}n^{n-k}$ \\
+    % Kirchoff's theorem
+    $\sum_{i=1}^n i^2 = n(n+1)(2n+1)/6$ & $\sum_{i=1}^n i^3 = n^2(n+1)^2/4$ \\
+    $!n = n\times!(n-1)+(-1)^n$ & $!n = (n-1)(!(n-1)+!(n-2))$ \\
+    $\sum_{i=1}^n \binom{n}{i} F_i = F_{2n}$ & $\sum_{i} \binom{n-i}{i} = F_{n+1}$ \\
+    $\sum_{k=0}^n \binom{k}{m} = \binom{n+1}{m+1}$ & $x^k = \sum_{i=0}^k i!\stirling{k}{i}\binom{x}{i} = \sum_{i=0}^k \left\langle {k \atop i} \right\rangle\binom{x+i}{k}$ \\
+
+    $a\equiv b\pmod{x,y} \Rightarrow a\equiv b\pmod{\lcm(x,y)}$ & $\sum_{d|n} \phi(d) = n$ \\
+    $ac\equiv bc\pmod{m} \Rightarrow a\equiv b\pmod{\frac{m}{\gcd(c,m)}}$ & $(\sum_{d|n} \sigma_0(d))^2 = \sum_{d|n} \sigma_0(d)^3$ \\
+    $p$ prime $\Leftrightarrow (p-1)!\equiv -1\pmod{p}$ & $\gcd(n^a-1,n^b-1) = n^{\gcd(a,b)}-1$ \\
+    $\sigma_x(n) = \prod_{i=0}^{r} \frac{p_i^{(a_i + 1)x} - 1}{p_i^x - 1}$ & $\sigma_0(n) = \prod_{i=0}^r (a_i + 1)$ \\
+    $\sum_{k=0}^m (-1)^k \binom{n}{k} = (-1)^m \binom{n-1}{m}$ & \\
+    $2^{\omega(n)} = O(\sqrt{n})$ & $\sum_{i=1}^n 2^{\omega(i)} = O(n \log n)$ \\
+    % Kinematic equations
+    $d = v_i t + \frac{1}{2}at^2$ & $v_f^2 = v_i^2 + 2ad$ \\
+    $v_f = v_i + at$ & $d = \frac{v_i + v_f}{2}t$ \\
+  \end{tabular}
+  \subsection{The Twelvefold Way}
+    Putting $n$ balls into $k$ boxes.\\
+  \begin{tabular}{@{}c|c|c|c|c|l@{}}
+  Balls & same & distinct & same & distinct & \\
+  Boxes & same & same & distinct & distinct & Remarks\\
+  \hline
+    - & $\mathrm{p}_k(n)$ & $\sum_{i=0}^k \stirling{n}{i}$ & $\binom{n+k-1}{k-1}$ & $k^n$ & $\mathrm{p}_k(n)$: \#partitions of $n$ into $\le k$ positive parts \\
+    $\mathrm{size}\ge 1$ & $\mathrm{p}(n,k)$ & $\stirling{n}{k}$ & $\binom{n-1}{k-1}$ & $k!\stirling{n}{k}$ & $\mathrm{p}(n,k)$: \#partitions of $n$ into $k$ positive parts \\
+    $\mathrm{size}\le 1$ & $[n \le k]$ & $[n \le k]$ & $\binom{k}{n}$ & $n!\binom{k}{n}$ & $[cond]$: $1$ if $cond=true$, else $0$\\
+  \bottomrule
+  \end{tabular}
 
 \clearpage
 
