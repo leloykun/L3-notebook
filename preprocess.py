@@ -2,7 +2,8 @@ import os
 import hashlib
 import re
 
-MARGIN = 100 - 40 - 8 + 7 - 1
+TO_HASH = False
+MARGIN = 100 - 40 - 8 + 7 - 1 + (0 if TO_HASH else 4)
 
 counter = 0
 
@@ -36,6 +37,9 @@ for path, dirs, files in os.walk('./code'):
                 error = False
                 last = False
                 for dat, hash in zip(dat, mkhash(dat)):
+                    if not TO_HASH:
+                        hash = ""
+
                     last = False
                     s = dat.lstrip(' ')
                     add = len(dat) - len(s)
@@ -54,7 +58,8 @@ for path, dirs, files in os.walk('./code'):
                     else:
                         if len(s) < MARGIN:
                             s = s+' '
-                        print(s.ljust(MARGIN, '-') + "//" + hash, file=out)
+                        #print(s.ljust(MARGIN, '-') + "//" + hash, file=out)
+                        print(s.ljust(MARGIN, '-') + hash, file=out)
 
             if last:
                 error = True
