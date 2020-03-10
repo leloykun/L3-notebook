@@ -31,7 +31,8 @@ struct dynamic_hull : multiset<line> {
         iterator x = prev(y);
         if (z == end())
             return y->m == x->m && y->b <= x->b;
-        return (x->b - y->b)*(z->m - y->m)>=(y->b - z->b)*(y->m - x->m);
+        return (x->b - y->b)*(z->m - y->m)>=
+               (y->b - z->b)*(y->m - x->m);
     }
     iterator next(iterator y) {return ++y;}
     iterator prev(iterator y) {return --y;}
