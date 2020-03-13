@@ -1,7 +1,6 @@
 struct segtree {
   int i, j, val;
   segtree *l, *r;
-  segtree(int _i, int _j) : i(_i), j(_j) {}
   segtree(vi &ar, int _i, int _j) : i(_i), j(_j) {
     if (i == j) {
       val = ar[i];
@@ -13,30 +12,25 @@ struct segtree {
       val = l->val + r->val;
     }
   }
+  segtree(int i, int j, segtree *l, segtree *r, int val) :
+    i(i), j(j), l(l), r(r), val(val) {}
   segtree* update(int _i, int _val) {
-    if (_i <= i and j <= _i) {
-      segtree *new_node = new segtree(i, j);
-      new_node->l = l;
-      new_node->r = r;
-      new_node->val = val + _val;
-      return new_node;
-    } else if (_i < i or j < _i) {
+    if (_i <= i and j <= _i)
+      return new segtree(i, j, l, r, val + _val);
+    else if (_i < i or j < _i)
       return this;
-    } else {
-      segtree *new_node = new segtree(i, j);
-      new_node->l = l->update(_i, _val);
-      new_node->r = r->update(_i, _val);
-      new_node->val = new_node->l->val + new_node->r->val;
-      return new_node;
+    else {
+      segtree *nl = l->update(_i, _val);
+      segtree *nr = r->update(_i, _val);
+      return new segtree(i, j, nl, nr, nl->val + nr->val);
     }
   }
   int query(int _i, int _j) {
-    if (_i <= i and j <= _j) {
+    if (_i <= i and j <= _j)
       return val;
-    } else if (_j < i or j < _i) {
+    else if (_j < i or j < _i)
       return 0;
-    } else {
+    else
       return l->query(_i, _j) + r->query(_i, _j);
-    }
   }
 };
