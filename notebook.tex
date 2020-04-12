@@ -150,11 +150,12 @@
   \subsection{Minimum Mean Weight Cycle}
     Run this for each strongly connected component
     \code{graphs/min_mean_cycle.cpp}
-	\subsection{Cut Points and Bridges}
-    \code{graphs/bridges_artics.cpp}
 	\subsection{Biconnected Components}
+	  \subsubsection{Cut Points, Bridges, and Block-Cut Tree}
+      \code{graphs/bridges_artics.cpp}
 		\subsubsection{Bridge Tree}
-		\subsubsection{Block-Cut Tree}
+      Run the bridge finding algorithm first, burn the bridges, compress the
+      remaining biconnected components, and then connect them using the bridges.
 	\subsection{Minimum Spanning Tree}
 		\subsubsection{Kruskal}
       \code{graphs/mst/kruskal.cpp}
