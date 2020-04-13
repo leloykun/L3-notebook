@@ -4,7 +4,6 @@
 \usepackage[utf8]{inputenc}
 \usepackage{booktabs}
 \usepackage{caption}
-\usepackage{color}
 \usepackage{fancyhdr}
 \usepackage{float}
 \usepackage{fullpage}
@@ -20,6 +19,11 @@
 \usepackage{enumitem}
 \usepackage{multicol}
 \usepackage{bookmark}
+\usepackage{color}
+\usepackage{xcolor}
+\usepackage{soul}
+
+\setcounter{tocdepth}{3}
 
 \newcommand{\subtitle}[1]{%
   \posttitle{%
@@ -55,6 +59,14 @@
 \newcommand*\ShiftRight{\gg}
 \newcommand*\BitNeg{\ensuremath{\mathord{\sim}}}
 \DeclareRobustCommand{\stirling}{\genfrac\{\}{0pt}{}}
+
+\newcommand{\sectionRed}[1]{\section{\colorbox{red}{\color{white}#1}}}
+\newcommand{\subsectionRed}[1]{\subsection{\colorbox{red}{\color{white}#1}}}
+\newcommand{\subsubsectionRed}[1]{\subsubsection{\colorbox{red}{\color{white}#1}}}
+
+\newcommand{\sectionBlack}[1]{\section{\colorbox{black}{\color{white}#1}}}
+\newcommand{\subsectionBlack}[1]{\subsection{\colorbox{black}{\color{white}#1}}}
+\newcommand{\subsubsectionBlack}[1]{\subsubsection{\colorbox{black}{\color{white}#1}}}
 
 \newenvironment{myitemize}
 { \begin{itemize}[leftmargin=.5cm]
@@ -112,17 +124,17 @@
   \subsection{Treap}
 		\subsubsection{Implicit Treap}
 			\code{data-structures/treap_implicit.cpp}
-		\subsubsection{Persistent Treap}
-  \subsection{Splay Tree}
+		\subsubsectionBlack{Persistent Treap}
+  \subsectionRed{Splay Tree}
     \code{data-structures/splay.cpp}
 	\subsection{Ordered Statistics Tree}
     \code{data-structures/ordered_statistics_tree.cpp}
-	\subsection{Sparse Table}
+  \subsectionRed{Sparse Table}
     \subsubsection{1D Sparse Table}
       \code{data-structures/sparse.cpp}
     \subsubsection{2D Sparse Table}
       \code{data-structures/sparse_2d.cpp}
-  \subsection{Misof Tree}
+  \subsectionRed{Misof Tree}
     A simple tree data structure for inserting, erasing, and querying the nth largest element.
     \code{data-structures/misof_tree.cpp}
 \section{Graphs}
@@ -137,7 +149,7 @@
 			\code{graphs/shortest_paths/dijkstra.cpp}
 		\subsubsection{Bellman-Ford}
 			\code{graphs/shortest_paths/bellman_ford.cpp}
-    \subsubsection{SPFA}
+    \subsubsectionRed{SPFA}
       \code{graphs/shortest_paths/spfa.cpp}
 	\subsection{All-Pairs Shortest Paths}
 		\subsubsection{Floyd-Washall}
@@ -145,15 +157,15 @@
 	\subsection{Strongly Connected Components}
 		\subsubsection{Kosaraju}
       \code{graphs/scc/kosaraju.cpp}
-    \subsubsection{Tarjan's Offline Algorithm}
+    \subsubsectionRed{Tarjan's Offline Algorithm}
       \code{graphs/scc/tarjan.cpp}
-  \subsection{Minimum Mean Weight Cycle}
+  \subsectionRed{Minimum Mean Weight Cycle}
     Run this for each strongly connected component
     \code{graphs/min_mean_cycle.cpp}
 	\subsection{Biconnected Components}
 	  \subsubsection{Cut Points, Bridges, and Block-Cut Tree}
       \code{graphs/bridges_artics.cpp}
-		\subsubsection{Bridge Tree}
+		\subsubsectionRed{Bridge Tree}
       Run the bridge finding algorithm first, burn the bridges, compress the
       remaining biconnected components, and then connect them using the bridges.
 	\subsection{Minimum Spanning Tree}
@@ -161,37 +173,38 @@
       \code{graphs/mst/kruskal.cpp}
 		\subsubsection{Prim}
       \code{graphs/mst/prim.cpp}
-	\subsection{Euler Path/Cycle}
-    \subsubsection{Euler Path/Cycle in a Directed Graph}
+	\subsectionRed{Euler Path/Cycle}
+    \subsubsectionRed{Euler Path/Cycle in a Directed Graph}
       \code{graphs/euler_path.cpp}
-    \subsubsection(Euler Path/Cycle in an Undirected Graph)
+    \subsubsectionRed{Euler Path/Cycle in an Undirected Graph}
       \code{graphs/euler_path_undirected.cpp}
-	\subsection{Bipartite Matching}
-		\subsubsection{Alternating Paths Algorithm}
+	\subsectionRed{Bipartite Matching}
+		\subsubsectionRed{Alternating Paths Algorithm}
       \code{graphs/bipartite_matching/bipartite_matching.cpp}
-		\subsubsection{Hopcroft-Karp Algorithm}
+		\subsubsectionRed{Hopcroft-Karp Algorithm}
       \code{graphs/bipartite_matching/hopcroft_karp.cpp}
-    \subsubsection{Minimum Vertex Cover in Bipartite Graphs}
+    \subsubsectionRed{Minimum Vertex Cover in Bipartite Graphs}
       \code{graphs/bipartite_matching/bipartite_mvc.cpp}
 	\subsection{Maximum Flow}
 		\subsubsection{Edmonds-Karp}
 			\code{graphs/max_flow/edmonds_karp.cpp}
-		\subsubsection{Dinic}
+		\subsubsectionRed{Dinic}
 			\code{graphs/max_flow/dinic.cpp}
-  \subsection{All-pairs Maximum Flow}
-    \subsubsection{Gomory-Hu}
+  \subsectionBlack{Minimum Cost Maximum Flow}
+  \subsectionRed{All-pairs Maximum Flow}
+    \subsubsectionRed{Gomory-Hu}
       \code{graphs/max_flow/gomory_hu_tree.cpp}
-  \subsection{Minimum Arborescence}
+  \subsectionRed{Minimum Arborescence}
     Given a weighted directed graph, finds a subset of edges of minimum
     total weight so that there is a unique path from the root $r$ to each
     vertex. Returns a vector of size $n$, where the $i$th element is the
     edge for the $i$th vertex. The answer for the root is undefined!
     \code{graphs/arborescence.cpp}
-  \subsection{Blossom algorithm}
+  \subsectionRed{Blossom algorithm}
     Finds a maximum matching in an arbitrary graph in $O(|V|^4)$ time. Be
     vary of loop edges.
     \code{graphs/blossom.cpp}
-  \subsection{Maximum Density Subgraph}
+  \subsectionRed{Maximum Density Subgraph}
     Given (weighted) undirected graph $G$. Binary search density. If $g$ is
     current density, construct flow network: $(S, u, m)$, $(u, T,
     m+2g-d_u)$, $(u,v,1)$, where $m$ is a large constant (larger than sum
@@ -201,7 +214,7 @@
     case when density is $0$. This also works for weighted graphs by
     replacing $d_u$ by the weighted degree, and doing more iterations (if
     weights are not integers).
-  \subsection{Maximum-Weight Closure}
+  \subsectionRed{Maximum-Weight Closure}
     Given a vertex-weighted directed graph $G$. Turn the graph into a flow
     network, adding weight $\infty$ to each edge. Add vertices $S,T$. For
     each vertex $v$ of weight $w$, add edge $(S,v,w)$ if $w\geq 0$, or edge
@@ -209,18 +222,18 @@
     the answer. Vertices reachable from $S$ are in the closure. The
     maximum-weight closure is the same as the complement of the
     minimum-weight closure on the graph with edges reversed.
-  \subsection{Maximum Weighted Independent Set in a Bipartite Graph}
+  \subsectionRed{Maximum Weighted Ind. Set in a Bipartite Graph}
     This is the same as the minimum weighted vertex cover. Solve this by
     constructing a flow network with edges $(S,u,w(u))$ for $u\in L$,
     $(v,T,w(v))$ for $v\in R$ and $(u,v,\infty)$ for $(u,v)\in E$. The
     minimum $S,T$-cut is the answer. Vertices adjacent to a cut edge are
     in the vertex cover.
-  \subsection{Synchronizing word problem}
+  \subsectionRed{Synchronizing word problem}
     A DFA has a synchronizing word (an input sequence that moves all states
     to the same state) iff.\ each pair of states has a synchronizing word.
     That can be checked using reverse DFS over pairs of states. Finding the
     shortest synchronizing word is NP-complete.
-  \subsection{Max flow with lower bounds on edges}
+  \subsectionRed{Max flow with lower bounds on edges}
     % TODO: Test this!
     Change edge $(u,v,l\leq f\leq c)$ to $(u,v,f\leq c-l)$. Add edge
     $(t,s,\infty)$. Create super-nodes $S$, $T$. Let $M(u) = \sum_{v}
@@ -229,7 +242,7 @@
     are saturated, then we have a feasible flow. Continue running max flow
     from $s$ to $t$ in original graph.
     % TODO: Was there something similar for vertex capacities that we should add?
-  \subsection{Tutte matrix for general matching}
+  \subsectionRed{Tutte matrix for general matching}
     Create an $n\times n$ matrix $A$. For each edge $(i,j)$, $i<j$, let
     $A_{ij} = x_{ij}$ and $A_{ji} = -x_{ij}$. All other entries are $0$.
     The determinant of $A$ is zero iff.\ the graph has a perfect matching.
@@ -237,11 +250,13 @@
     zero.
   \subsection{Heavy Light Decomposition}
     \code{graphs/heavy_light_decomposition.cpp}
-	\subsection{Centroid Decomposition}
+	\subsectionRed{Centroid Decomposition}
     \code{graphs/centroid_decomposition.cpp}
 	\subsection{Least Common Ancestor}
 		\subsubsection{Binary Lifting}
       \code{graphs/lca/binary_lifting.cpp}
+    \subsubsectionBlack{Euler Tour Sparse Table}
+    \subsubsectionBlack{Tarjan Off-line LCA}
   \subsection{Counting Spanning Trees}
     Kirchoff's Theorem: The number of spanning trees of any graph is the
     determinant of any cofactor of the Laplacian matrix in $O(n^3)$.
@@ -260,37 +275,41 @@
     \[
     \sum_{i=1}^n d_i \le k(k-1) + \sum_{i=k+1}^n \min\left(d_i, k\right)
     \]
-  \subsection{Tree Isomorphism}
+  \subsectionRed{Tree Isomorphism}
     \code{graphs/tree_isomorphism.cpp}
 \section{Strings}
-  \subsection{Knuth-Morris-Pratt}
+  \subsectionRed{Knuth-Morris-Pratt}
     Count and find all matches of string $f$ in string $s$ in $O(n)$ time.
     \code{strings/kmp.cpp}
   \subsection{Trie}
     \code{strings/trie.cpp}
-  \subsection{Suffix Array}
+    \subsubsection{Persistent Trie}
+      \code{strings/trie_persistent.cpp}
+  \subsectionRed{Suffix Array}
     Construct a sorted catalog of all substrings of $s$ in $O(n \log n)$ time using counting sort.
     \code{strings/suffix-array.cpp}
-  \subsection{Longest Common Prefix}
+  \subsectionRed{Longest Common Prefix}
     Find the length of the longest common prefix for every substring in $O(n)$.
     \code{strings/lcp.cpp}
-  \subsection{Aho-Corasick Trie}
+  \subsectionRed{Aho-Corasick Trie}
     Find all multiple pattern matches in $O(n)$ time. This is KMP for multiple strings.
     \code{strings/aho-corasick-trie.java}
-  \subsection{Palindromic Tree}
-    Find lengths and frequencies of all palindromic substrings of a string in $O(n)$ time.
+  \subsection{Palimdromes}
+    \subsubsectionRed{Palindromic Tree}
+      Find lengths and frequencies of all palindromic substrings of a string in $O(n)$ time.
 
-    Theorem: there can only be up to $n$ unique palindromic substrings for any string.
-    \code{strings/palindromic-tree.cpp}
-  \subsection{Z Algorithm}
+      Theorem: there can only be up to $n$ unique palindromic substrings for any string.
+      \code{strings/palindromic-tree.cpp}
+    \subsubsectionBlack{Eertree}
+  \subsectionRed{Z Algorithm}
     Find the longest common prefix of all substrings of $s$ with itself in $O(n)$ time.
     \code{strings/z.cpp}
-  \subsection{Booth's Minimum String Rotation}
+  \subsectionRed{Booth's Minimum String Rotation}
     Booth's Algo: Find the index of the lexicographically least string rotation in $O(n)$ time.
     \code{strings/booth.cpp}
 	\subsection{Hashing}
-    \subsubsection{Polynomial Hashing}
-      \code{strings/polynomial_hashing.cpp}
+    \subsubsection{Rolling Hash}
+      \code{strings/rolling_hash.cpp}
 \section{Number Theory}
 	\subsection{Eratosthenes Prime Sieve}
     \code{numtheory/prime-sieve.cpp}
