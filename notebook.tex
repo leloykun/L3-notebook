@@ -129,10 +129,10 @@
     \code{data-structures/splay.cpp}
 	\subsection{Ordered Statistics Tree}
     \code{data-structures/ordered_statistics_tree.cpp}
-  \subsectionRed{Sparse Table}
+  \subsection{Sparse Table}
     \subsubsection{1D Sparse Table}
       \code{data-structures/sparse.cpp}
-    \subsubsection{2D Sparse Table}
+    \subsubsectionRed{2D Sparse Table}
       \code{data-structures/sparse_2d.cpp}
   \subsectionRed{Misof Tree}
     A simple tree data structure for inserting, erasing, and querying the nth largest element.
@@ -149,7 +149,7 @@
 			\code{graphs/shortest_paths/dijkstra.cpp}
 		\subsubsection{Bellman-Ford}
 			\code{graphs/shortest_paths/bellman_ford.cpp}
-    \subsubsectionRed{SPFA}
+    \subsubsection{Shortest Path Faster Algorithm}
       \code{graphs/shortest_paths/spfa.cpp}
 	\subsection{All-Pairs Shortest Paths}
 		\subsubsection{Floyd-Washall}
@@ -165,7 +165,7 @@
 	\subsection{Biconnected Components}
 	  \subsubsection{Cut Points, Bridges, and Block-Cut Tree}
       \code{graphs/bridges_artics.cpp}
-		\subsubsectionRed{Bridge Tree}
+		\subsubsection{Bridge Tree}
       Run the bridge finding algorithm first, burn the bridges, compress the
       remaining biconnected components, and then connect them using the bridges.
 	\subsection{Minimum Spanning Tree}
@@ -190,7 +190,8 @@
 			\code{graphs/max_flow/edmonds_karp.cpp}
 		\subsubsectionRed{Dinic}
 			\code{graphs/max_flow/dinic.cpp}
-  \subsectionBlack{Minimum Cost Maximum Flow}
+  \subsection{Minimum Cost Maximum Flow}
+    \code{graphs/max_flow/mcst.cpp}
   \subsectionRed{All-pairs Maximum Flow}
     \subsubsectionRed{Gomory-Hu}
       \code{graphs/max_flow/gomory_hu_tree.cpp}
@@ -204,7 +205,7 @@
     Finds a maximum matching in an arbitrary graph in $O(|V|^4)$ time. Be
     vary of loop edges.
     \code{graphs/blossom.cpp}
-  \subsectionRed{Maximum Density Subgraph}
+  \subsection{Maximum Density Subgraph}
     Given (weighted) undirected graph $G$. Binary search density. If $g$ is
     current density, construct flow network: $(S, u, m)$, $(u, T,
     m+2g-d_u)$, $(u,v,1)$, where $m$ is a large constant (larger than sum
@@ -214,7 +215,7 @@
     case when density is $0$. This also works for weighted graphs by
     replacing $d_u$ by the weighted degree, and doing more iterations (if
     weights are not integers).
-  \subsectionRed{Maximum-Weight Closure}
+  \subsection{Maximum-Weight Closure}
     Given a vertex-weighted directed graph $G$. Turn the graph into a flow
     network, adding weight $\infty$ to each edge. Add vertices $S,T$. For
     each vertex $v$ of weight $w$, add edge $(S,v,w)$ if $w\geq 0$, or edge
@@ -222,18 +223,18 @@
     the answer. Vertices reachable from $S$ are in the closure. The
     maximum-weight closure is the same as the complement of the
     minimum-weight closure on the graph with edges reversed.
-  \subsectionRed{Maximum Weighted Ind. Set in a Bipartite Graph}
+  \subsection{Maximum Weighted Ind. Set in a Bipartite Graph}
     This is the same as the minimum weighted vertex cover. Solve this by
     constructing a flow network with edges $(S,u,w(u))$ for $u\in L$,
     $(v,T,w(v))$ for $v\in R$ and $(u,v,\infty)$ for $(u,v)\in E$. The
     minimum $S,T$-cut is the answer. Vertices adjacent to a cut edge are
     in the vertex cover.
-  \subsectionRed{Synchronizing word problem}
+  \subsection{Synchronizing word problem}
     A DFA has a synchronizing word (an input sequence that moves all states
     to the same state) iff.\ each pair of states has a synchronizing word.
     That can be checked using reverse DFS over pairs of states. Finding the
     shortest synchronizing word is NP-complete.
-  \subsectionRed{Max flow with lower bounds on edges}
+  \subsection{Max flow with lower bounds on edges}
     % TODO: Test this!
     Change edge $(u,v,l\leq f\leq c)$ to $(u,v,f\leq c-l)$. Add edge
     $(t,s,\infty)$. Create super-nodes $S$, $T$. Let $M(u) = \sum_{v}
@@ -242,7 +243,7 @@
     are saturated, then we have a feasible flow. Continue running max flow
     from $s$ to $t$ in original graph.
     % TODO: Was there something similar for vertex capacities that we should add?
-  \subsectionRed{Tutte matrix for general matching}
+  \subsection{Tutte matrix for general matching}
     Create an $n\times n$ matrix $A$. For each edge $(i,j)$, $i<j$, let
     $A_{ij} = x_{ij}$ and $A_{ji} = -x_{ij}$. All other entries are $0$.
     The determinant of $A$ is zero iff.\ the graph has a perfect matching.
