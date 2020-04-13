@@ -12,4 +12,4 @@ A collection of algorithms, data structures and other useful information for com
 ### (sub)(sub)Section Syntax:
 - <span style="color:red">Red</span>: copy-pasted / non-tested code
 - <span style="color:black">Black</span>: no code yet
-- To color a (sub)(sub)section, simple use (sub)(sub)section`COLOR`
+- To color a (sub)(sub)section, simple use `(sub)(sub)sectionCOLOR`
