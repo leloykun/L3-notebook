@@ -38,19 +38,6 @@ struct flow_network {
   bool is_next(int u, int v) {
     return dist[v] == dist[u] + 1;
   }
-  ll dfs(int u, ll flow) {
-    if (u == t)   return flow;
-    for (int &i = adj_ptr[u]; i < adj[u].size(); ++i) {
-      int v = adj[u][i];
-      if (is_next(u, v) and res(u, v) > 0) {
-        ll df = dfs(v, std::min(flow, res(u, v)));
-        if (df > 0) {
-          f[u][v] += df;
-          f[v][u] -= df;
-          return df;
-    } } }
-    return 0;
-  }
   bool dfs(int u) {
     if (u == t)   return true;
     for (int &i = adj_ptr[u]; i < adj[u].size(); ++i) {
