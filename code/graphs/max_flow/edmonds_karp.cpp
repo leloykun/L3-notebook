@@ -11,8 +11,7 @@ struct flow_network {
       f[i] = new int[n];
       for (int j = 0; j < n; ++j)
         c[i][j] = f[i][j] = 0;
-    }
-  }
+  } }
   void add_edge(int u, int v, int w) {
     adj[u].push_back(v);
     adj[v].push_back(u);
@@ -30,9 +29,7 @@ struct flow_network {
           if (v == this->t)
             return true;
           q.push(v);
-        }
-      }
-    }
+    } } }
     return false;
   }
   bool aug_path() {
@@ -52,5 +49,4 @@ struct flow_network {
       ans += flow;
     }
     return ans;
-  }
-};
+} };
