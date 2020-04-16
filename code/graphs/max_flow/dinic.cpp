@@ -1,77 +1,67 @@
+struct edge {
+  int u, v;
+  ll cap, flow;
+  edge(int u, int v, ll cap, ll flow) :
+    u(u), v(v), cap(cap), flow(flow) {}
+};
 struct flow_network {
-  int n, s, t, *adj_ptr, *dist, *par, **c, **f;
+  int n, s, t, *adj_ptr;
+  ll *dist;
   vi *adj;
+  std::vector<edge> edges;
   flow_network(int n, int s, int t) : n(n), s(s), t(t) {
-    adj = new std::vector<int>[n];
+    adj     = new std::vector<int>[n];
     adj_ptr = new int[n];
-    dist = new int[n];
-    par = new int[n];
-    c = new int*[n];
-    f = new int*[n];
-    for (int i = 0; i < n; ++i) {
-      c[i] = new int[n];
-      f[i] = new int[n];
-      for (int j = 0; j < n; ++j)
-        c[i][j] = f[i][j] = 0;
-    }
+    dist    = new ll[n];
   }
-  void add_edge(int u, int v, int w) {
-    adj[u].push_back(v);
-    adj[v].push_back(u);
-    c[u][v] += w;
+  void add_edge(int u, int v, ll cap) {
+    adj[u].push_back(edges.size());
+    edges.push_back(edge(u, v, cap, 0LL));
+    adj[v].push_back(edges.size());
+    edges.push_back(edge(v, u, cap, 0LL));
   }
-  int res(int i, int j) { return c[i][j] - f[i][j]; }
-  void reset(int *ar, int val) {
-    for (int i = 0; i < n; ++i)
-      ar[i] = val;
-  }
+  ll res(edge &e) { return e.cap - e.flow; }
   bool make_level_graph() {
-    reset(dist, -1);
-    std::queue<int> q;
-    q.push(s);
+    for (int u = 0; u < n; ++u)   dist[u] = -1;
     dist[s] = 0;
+    std::queue<int> q;     q.push(s);
     while (!q.empty()) {
       int u = q.front();  q.pop();
-      for (int v : adj[u]) {
-        if (res(u, v) > 0 and dist[v] == -1) {
-          dist[v] = dist[u] + 1;
-          q.push(v);
+      for (int i : adj[u]) {
+        edge e = edges[i];
+        if (dist[e.v] < 0 and res(e)) {
+          dist[e.v] = dist[u] + 1;
+          q.push(e.v);
         }
       }
     }
     return dist[t] != -1;
   }
-  bool next(int u, int v) {
+  bool is_next(int u, int v) {
     return dist[v] == dist[u] + 1;
   }
-  bool dfs(int u) {
-    if (u == t)   return true;
+  ll dfs(int u, ll flow) {
+    if (u == t)   return flow;
     for (int &i = adj_ptr[u]; i < adj[u].size(); ++i) {
-      int v = adj[u][i];
-      if (next(u, v) and res(u, v) > 0 and dfs(v)) {
-        par[v] = u;
-        return true;
+      int j = adj[u][i];
+      edge &e = edges[j], &er = edges[j^1];
+      if (is_next(u, e.v) and res(e) > 0) {
+        ll df = dfs(e.v, std::min(flow, res(e)));
+        if (df > 0) {
+          e.flow  += df;
+          er.flow -= df;
+          return df;
+        }
       }
     }
-    dist[u] = -1;
-    return false;
+    return 0;
   }
-  bool aug_path() {
-    reset(par, -1);
-    par[s] = s;
-    return dfs(s);  }
-  int calc_max_flow() {
-    int ans = 0;
+  ll calc_max_flow() {
+    ll ans = 0;
     while (make_level_graph()) {
-      reset(adj_ptr, 0);
-      while (aug_path()) {
-        int flow = INF;
-        for (int u = t; u != s; u = par[u])
-          flow = std::min(flow, res(par[u], u));
-        for (int u = t; u != s; u = par[u])
-          f[par[u]][u] += flow, f[u][par[u]] -= flow;
-        ans += flow;
-      }
+      for (int u = 0; u < n; ++u)   adj_ptr[u] = 0;
+      while (ll df = dfs(s, INF))
+        ans += df;
     }
     return ans;
   }
