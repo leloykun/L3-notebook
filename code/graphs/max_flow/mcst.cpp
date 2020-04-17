@@ -6,7 +6,7 @@ struct edge {
 };
 struct flow_network {
   int n, s, t, *par, *in_queue, *num_vis;
-  ll *dist;
+  ll *dist, *pot;
   std::vector<edge> edges;
   std::vector<int> *adj;
   flow_network(int n, int s, int t) : n(n), s(s), t(t) {
@@ -15,6 +15,8 @@ struct flow_network {
     in_queue = new int[n];
     num_vis = new int[n];
     dist = new ll[n];
+    pot  = new ll[n];
+    for (int u = 0; u < n; ++u) pot[u] = 0;
   }
   void add_edge(int u, int v, ll cap, ll cost) {
     adj[u].push_back(edges.size());
@@ -23,16 +25,28 @@ struct flow_network {
     edges.push_back(edge(v, u, -cost, 0LL, 0LL));
   }
   ll res(edge &e) { return e.cap - e.flow; }
+  void bellman_ford() {
+    for (int u = 0; u < n; ++u) pot[u] = INF;
+    pot[s] = 0;
+    for (int it = 0; it < n-1; ++it)
+      for (auto e : edges)
+        if (res(e) > 0)
+          pot[e.v] = std::min(pot[e.v], pot[e.u] + e.cost);
+  }
   bool spfa () {
     std::queue<int> q;  q.push(s);
     while (not q.empty()) {
       int u = q.front();  q.pop();  in_queue[u] = 0;
-      if (++num_vis[u] >= n)  dist[u] = -INF;
+      if (++num_vis[u] >= n) {
+        dist[u] = -INF;
+        continue;
+      }
       for (int i : adj[u]) {
         edge e = edges[i];
         if (res(e) <= 0)  continue;
-        if (dist[e.v] > dist[u] + e.cost) {
-          dist[e.v] = dist[u] + e.cost;
+        ll nd = dist[u] + e.cost + pot[u] - pot[e.v];
+        if (dist[e.v] > nd) {
+          dist[e.v] = nd;
           par[e.v] = i;
           if (not in_queue[e.v]) {
             q.push(e.v);
@@ -51,8 +65,10 @@ struct flow_network {
     in_queue[s] = 1;
     return spfa();
   }
-  ii calc_max_flow() {
+  pll calc_max_flow(bool do_bellman_ford=false) {
     ll total_cost = 0, total_flow = 0;
+    if (do_bellman_ford)
+      bellman_ford();
     while (aug_path()) {
       ll f = INF;
       for (int i = par[t]; i != -1; i = par[edges[i].u])
@@ -61,9 +77,11 @@ struct flow_network {
         edges[i].flow   += f;
         edges[i^1].flow -= f;
       }
-      total_cost += f * dist[t];
+      total_cost += f * (dist[t] + pot[t] - pot[s]);
       total_flow += f;
+      for (int u = 0; u < n; ++u)
+        if (par[u] != -1)
+          pot[u] += dist[u];
     }
     return {total_cost, total_flow};
-  }
-};
+} };

@@ -20,14 +20,20 @@ struct eertree {
     cur_node = 1;
     ptr = 2;
   }
-  void insert(std::string &s, int i) {
-    int temp = cur_node;
+  int get_link(int temp, std::string &s, int i) {
     while (true) {
       int cur_len = tree[temp].len;
+      // don't return immediately if you want to
+      // get all palindromes; not recommended
       if (i-cur_len-1 >= 0 and s[i] == s[i-cur_len-1])
-        break;
+        return temp;
       temp = tree[temp].back_edge;
     }
+    return temp;
+  }
+  void insert(std::string &s, int i) {
+    int temp = cur_node;
+    temp = get_link(temp, s, i);
     if (tree[temp].adj[s[i] - 'a'] != 0) {
       cur_node = tree[temp].adj[s[i] - 'a'];
       return;
@@ -42,12 +48,7 @@ struct eertree {
       tree[cur_node].back_edge = 2;
       return;
     }
-    while (true) {
-      int cur_len = tree[temp].len;
-      if (i-cur_len-1 >= 0 and s[i] == s[i-cur_len-1])
-        break;
-      temp = tree[temp].back_edge;
-    }
+    temp = get_link(temp, s, i);
     tree[cur_node].back_edge = tree[temp].adj[s[i]-'a'];
   }
   void insert(std::string &s) {
