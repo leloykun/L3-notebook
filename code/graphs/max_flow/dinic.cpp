@@ -1,7 +1,7 @@
 struct flow_network {
   int n, s, t, *adj_ptr, *par;
   ll *dist, **c, **f;
-  vi *adj;
+  std::vector<int> *adj;
   flow_network(int n, int s, int t) : n(n), s(s), t(t) {
     adj     = new std::vector<int>[n];
     adj_ptr = new int[n];

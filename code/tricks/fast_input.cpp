@@ -10,4 +10,3 @@ void readn(register int *n) {
       default: *n *= 10; *n += c - '0'; break; } }
 hell:
   *n *= sign; }
-// vim: cc=60 ts=2 sts=2 sw=2:

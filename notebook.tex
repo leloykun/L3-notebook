@@ -1,4 +1,4 @@
-  \documentclass[8pt,a4paper,landscape,oneside]{amsart}
+\documentclass[8pt,a4paper,landscape,oneside]{amsart}
 \usepackage{amsmath, amsthm, amssymb, amsfonts}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
@@ -115,12 +115,12 @@
       \code{data-structures/segtree_rec_RU_RQ.cpp}
     \subsubsection{Array-based, Range-update Segment Tree}
       \code{data-structures/segtree_array_lazy.cpp}
-    \subsubsection{Array-based, Point-update, Persistent Segment Tree}
-      \code{data-structures/segtree_persistent_iter.cpp}
-    \subsubsection{Pointer-based, Point-update, Persistent Segment Tree}
-      \code{data-structures/segtree_persistent_rec.cpp}
     \subsubsection{2D Segment Tree}
       \code{data-structures/segtree_2d.cpp}
+    \subsubsection{Persistent Segment Tree}
+      \code{data-structures/segtree_persistent_rec.cpp}
+  \subsection{Leq Counter}
+    \code{data-structures/leq_counter.cpp}
   \subsection{Treap}
 		\subsubsection{Implicit Treap}
 			\code{data-structures/treap_implicit.cpp}
@@ -256,7 +256,8 @@
 	\subsection{Least Common Ancestor}
 		\subsubsection{Binary Lifting}
       \code{graphs/lca/binary_lifting.cpp}
-    \subsubsectionBlack{Euler Tour Sparse Table}
+    \subsubsection{Euler Tour Sparse Table}
+      \code{graphs/lca/lca_sparse_table.cpp}
     \subsubsectionBlack{Tarjan Off-line LCA}
   \subsection{Counting Spanning Trees}
     Kirchoff's Theorem: The number of spanning trees of any graph is the
@@ -301,7 +302,8 @@
 
       Theorem: there can only be up to $n$ unique palindromic substrings for any string.
       \code{strings/palindromic-tree.cpp}
-    \subsubsectionBlack{Eertree}
+    \subsubsection{Eertree}
+      \code{strings/eertree.cpp}
   \subsectionRed{Z Algorithm}
     Find the longest common prefix of all substrings of $s$ with itself in $O(n)$ time.
     \code{strings/z.cpp}
