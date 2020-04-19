@@ -1,10 +1,10 @@
 struct graph {
-  int n, logn, *ar, *dep, *first, *lg;
-  ii **spt;
+  int n, logn, *par, *dep, *first, *lg, **spt;
   vi *adj, euler;
   graph(int n, int logn=20) : n(n), logn(logn) {
     adj = new vi[n];
-    ar = new int[n];
+    roots = new segtree*[n];
+    par = new int[n];
     dep = new int[n];
     first = new int[n];
   }
@@ -14,13 +14,15 @@ struct graph {
   }
   void dfs(int u, int p, int d) {
     dep[u] = d;
+    par[u] = p;
     first[u] = euler.size();
     euler.push_back(u);
-    for (int v : adj[u]) {
+    for (int v : adj[u])
       if (v != p) {
         dfs(v, u, d+1);
         euler.push_back(u);
-  } } }
+      }
+  }
   void prep_lca(int root=0) {
     dfs(root, root, 0);
     int en = euler.size();
@@ -28,19 +30,23 @@ struct graph {
     lg[0] = lg[1] = 0;
     for (int i = 2; i <= en; ++i)
       lg[i] = lg[i >> 1] + 1;
-    spt = new ii*[en];
+    spt = new int*[en];
     for (int i = 0; i < en; ++i) {
-      spt[i] = new ii[lg[en]];
-      spt[i][0] = {dep[euler[i]], i};
+      spt[i] = new int[lg[en]];
+      spt[i][0] = euler[i];
     }
-    for (int k = 1; k < lg[en]; ++k)
-      for (int i = 0; i + (1 << (k-1)) < en; ++i)
-        spt[i][k] = std::min(spt[i][k-1],
-                             spt[i + (1 << (k-1))][k-1]);
+    for (int k = 0; (2 << k) <= en; ++k)
+      for (int i = 0; i + (2 << k) <= en; ++i)
+        if (dep[spt[i][k]] < dep[spt[i+(1<<k)][k]])
+          spt[i][k+1] = spt[i][k];
+        else
+          spt[i][k+1] = spt[i+(1<<k)][k];
   }
   int lca(int u, int v) {
     int a = first[u], b = first[v];
     if (a > b)    std::swap(a, b);
-    int k = lg[b - a], ba = b - (1 << k) + 1;
-    return euler[std::min(spt[a][k], spt[ba][k]).second];
+    int k = lg[b-a+1], ba = b - (1 << k) + 1;
+    if (dep[spt[a][k]] < dep[spt[ba][k]])
+      return spt[a][k];
+    return spt[ba][k];
 } };

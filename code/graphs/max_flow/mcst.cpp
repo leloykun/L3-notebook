@@ -39,7 +39,7 @@ struct flow_network {
       int u = q.front();  q.pop();  in_queue[u] = 0;
       if (++num_vis[u] >= n) {
         dist[u] = -INF;
-        continue;
+        return false;
       }
       for (int i : adj[u]) {
         edge e = edges[i];

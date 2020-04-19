@@ -1,37 +1,38 @@
+struct edge {
+  int u, v;
+  ll cap, flow;
+  edge(int u, int v, ll cap) :
+    u(u), v(v), cap(cap), flow(0) {}
+};
 struct flow_network {
   int n, s, t, *adj_ptr, *par;
-  ll *dist, **c, **f;
+  ll *dist;
+  std::vector<edge> edges;
   std::vector<int> *adj;
-  flow_network(int n, int s, int t) : n(n), s(s), t(t) {
+  flow_network(int n) : n(n) {
     adj     = new std::vector<int>[n];
     adj_ptr = new int[n];
     par  = new int[n];
     dist = new ll[n];
-    c    = new ll*[n];
-    f    = new ll*[n];
-    for (int u = 0; u < n; ++u) {
-      c[u] = new ll[n];
-      f[u] = new ll[n];
-      for (int v = 0; v < n; ++v)
-        c[u][v] = f[u][v] = 0;
-  } }
-  void add_edge(int u, int v, ll cap, bool bi=false) {
-    adj[u].push_back(v);
-    adj[v].push_back(u);
-    c[u][v] += cap;
-    if (bi)  c[v][u] += cap;
   }
-  ll res(int u, int v) { return c[u][v] - f[u][v]; }
+  void add_edge(int u, int v, ll cap, bool bi=false) {
+    adj[u].push_back(edges.size());
+    edges.push_back(edge(u, v, cap));
+    adj[v].push_back(edges.size());
+    edges.push_back(edge(v, u, (bi ? cap : 0LL)));
+  }
+  ll res(edge &e) { return e.cap - e.flow; }
   bool make_level_graph() {
     for (int u = 0; u < n; ++u)   dist[u] = -1;
     dist[s] = 0;
     std::queue<int> q;     q.push(s);
     while (!q.empty()) {
       int u = q.front();  q.pop();
-      for (int v : adj[u]) {
-        if (dist[v] < 0 and res(u, v)) {
-          dist[v] = dist[u] + 1;
-          q.push(v);
+      for (int i : adj[u]) {
+        edge &e = edges[i];
+        if (dist[e.v] < 0 and res(e)) {
+          dist[e.v] = dist[u] + 1;
+          q.push(e.v);
     } } }
     return dist[t] != -1;
   }
@@ -40,17 +41,17 @@ struct flow_network {
   }
   bool dfs(int u) {
     if (u == t)   return true;
-    for (int &i = adj_ptr[u]; i < adj[u].size(); ++i) {
-      int v = adj[u][i];
-      if (is_next(u, v) and res(u, v) > 0 and dfs(v)) {
-        par[v] = u;
+    for (int &ii = adj_ptr[u]; ii < adj[u].size(); ++ii) {
+      int i = adj[u][ii];
+      edge &e = edges[i];
+      if (is_next(u, e.v) and res(e) > 0 and dfs(e.v)) {
+        par[e.v] = i;
         return true;
     } }
     return false;
   }
   bool aug_path() {
     for (int u = 0; u < n; ++u) par[u] = -1;
-    par[s] = s;
     return dfs(s);
   }
   ll calc_max_flow() {
@@ -59,10 +60,12 @@ struct flow_network {
       for (int u = 0; u < n; ++u)   adj_ptr[u] = 0;
       while (aug_path()) {
         ll flow = INF;
-        for (int u = t; u != s; u = par[u])
-          flow = std::min(flow, res(par[u], u));
-        for (int u = t; u != s; u = par[u])
-          f[par[u]][u] += flow, f[u][par[u]] -= flow;
+        for (int i = par[t]; i != -1; i = par[edges[i].u])
+          flow = std::min(flow, res(edges[i]));
+        for (int i = par[t]; i != -1; i = par[edges[i].u]) {
+          edges[i].flow   += flow;
+          edges[i^1].flow -= flow;
+        }
         total_flow += flow;
     } }
     return total_flow;
