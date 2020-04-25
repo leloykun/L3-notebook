@@ -1,10 +1,9 @@
 struct graph {
   int n, *disc, *low, TIME;
   vi *adj, stk, articulation_points;
-  vii bridges;
+  std::set<ii> bridges;
   vvi comps;
-  graph (int n) {
-    this->n = n;
+  graph (int n) : n(n) {
     adj = new vi[n];
     disc = new int[n];
     low = new int[n];
@@ -23,7 +22,10 @@ struct graph {
         _bridges_artics(v, u);
         children++;
         if (disc[u] < low[v])
-          bridges.push_back({u, v});
+          bridges.insert({
+            std::min(u, v),
+            std::max(u, v)
+          });
         if (disc[u] <= low[v]) {
           has_low_child = true;
           comps.push_back({u});
@@ -39,30 +41,13 @@ struct graph {
         (p != -1 && has_low_child))
       articulation_points.push_back(u);
   }
-  void bridges_artics(int root) {
+  void bridges_artics() {
     for (int u = 0; u < n; ++u)   disc[u] = -1;
     stk.clear();
     articulation_points.clear();
     bridges.clear();
     comps.clear();
     TIME = 0;
-    _bridges_artics(root, -1);
-  }
-  graph generate_block_cut_tree() {
-    int bct_n = articulation_points.size() + comps.size();
-    vi block_id(n), is_art(n, 0);
-    graph tree(bct_n);
-    for (int i = 0; i < articulation_points.size(); ++i) {
-      block_id[articulation_points[i]] = i;
-      is_art[articulation_points[i]] = 1;
-    }
-    for (int i = 0; i < comps.size(); ++i) {
-      int id = i + articulation_points.size();
-      for (int u : comps[i])
-        if (is_art[u])
-          tree.add_edge(block_id[u], id);
-        else
-          block_id[u] = id;
-    }
-    return tree;
+    for (int u = 0; u < n; ++u) if (disc[u] == -1)
+      _bridges_artics(u, -1);
 } };
