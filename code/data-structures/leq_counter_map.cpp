@@ -11,11 +11,11 @@ struct LeqCounter {
     roots[0] = new segtree(0, n);
     int prev = 0;
     for (ii &e : nums) {
-      roots[e.first] = roots[prev]->update(e.second, e.second, 1);
+      roots[e.first] = roots[prev]->update(e.second, 1);
       prev = e.first;
   } }
   int count(int i, int j, int x) {
     auto it = neg_nums.lower_bound(-x);
     if (it == neg_nums.end())   return 0;
-    return roots[-*it]->get(i, j);
+    return roots[-*it]->query(i, j);
 } };

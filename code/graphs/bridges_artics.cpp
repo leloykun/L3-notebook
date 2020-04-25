@@ -30,8 +30,7 @@ struct graph {
           while (comps.back().back() != v and !stk.empty()) {
             comps.back().push_back(stk.back());
             stk.pop_back();
-          }
-        }
+        } }
         low[u] = std::min(low[u], low[v]);
       } else if (v != p)
         low[u] = std::min(low[u], disc[v]);
@@ -41,8 +40,7 @@ struct graph {
       articulation_points.push_back(u);
   }
   void bridges_artics(int root) {
-    for (int u = 0; u < n; ++u)
-      disc[u] = -1;
+    for (int u = 0; u < n; ++u)   disc[u] = -1;
     stk.clear();
     articulation_points.clear();
     bridges.clear();
@@ -52,7 +50,7 @@ struct graph {
   }
   graph generate_block_cut_tree() {
     int bct_n = articulation_points.size() + comps.size();
-    std::vector<int> block_id(n), is_art(n, 0);
+    vi block_id(n), is_art(n, 0);
     graph tree(bct_n);
     for (int i = 0; i < articulation_points.size(); ++i) {
       block_id[articulation_points[i]] = i;
@@ -67,5 +65,4 @@ struct graph {
           block_id[u] = id;
     }
     return tree;
-  }
-};
+} };

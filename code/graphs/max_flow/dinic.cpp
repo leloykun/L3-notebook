@@ -9,7 +9,7 @@ struct flow_network {
   ll *dist;
   std::vector<edge> edges;
   std::vector<int> *adj;
-  flow_network(int n) : n(n) {
+  flow_network(int n, int s, int t) : n(n), s(s), t(t) {
     adj     = new std::vector<int>[n];
     adj_ptr = new int[n];
     par  = new int[n];
