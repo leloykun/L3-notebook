@@ -1,8 +1,8 @@
 struct edge {
   int u, v;
   ll cost, cap, flow;
-  edge(int u, int v, ll cost, ll cap, ll flow) :
-    u(u), v(v), cost(cost), cap(cap), flow(flow) {}
+  edge(int u, int v, ll cap, ll cost) :
+    u(u), v(v), cap(cap), cost(cost), flow(0) {}
 };
 struct flow_network {
   int n, s, t, *par, *in_queue, *num_vis;
@@ -20,9 +20,9 @@ struct flow_network {
   }
   void add_edge(int u, int v, ll cap, ll cost) {
     adj[u].push_back(edges.size());
-    edges.push_back(edge(u, v, cost, cap, 0LL));
+    edges.push_back(edge(u, v, cap, cost));
     adj[v].push_back(edges.size());
-    edges.push_back(edge(v, u, -cost, 0LL, 0LL));
+    edges.push_back(edge(v, u, 0LL, -cost));
   }
   ll res(edge &e) { return e.cap - e.flow; }
   void bellman_ford() {
@@ -56,10 +56,10 @@ struct flow_network {
   }
   bool aug_path() {
     for (int u = 0; u < n; ++u) {
-      par[u]  = -1;
+      par[u]      = -1;
       in_queue[u] = 0;
-      num_vis[u] = 0;
-      dist[u] = INF;
+      num_vis[u]  = 0;
+      dist[u]     = INF;
     }
     dist[s] = 0;
     in_queue[s] = 1;
