@@ -3,7 +3,7 @@ A collection of algorithms, data structures and other useful information for com
 
 ### How to contribute:
 - clone this repository using `git clone https://github.com/leloykun/admu-progvar-notebook.git`
-- edit/add codes to the folder `/code`
+- add codes to the folder `/code` and edit `notebook.tex`
 - install latex with `sudo apt install texlive-full` (warning: this could take up 5Gb of space)
 - install `Pygments` with `pip3 install Pygments`
 - run `makefile.sh`
@@ -15,4 +15,4 @@ A collection of algorithms, data structures and other useful information for com
 - <span style="color:red">Red</span>: copy-pasted / non-tested code
 - <span style="color:black">Black</span>: no code yet
 - To color a (sub)(sub)section, simple use `(sub)(sub)section(COLOR)`
-- - For example, `subsectionBlack` gets you a black-colored subsection
+    - For example, `subsectionBlack` gets you a black-colored subsection
