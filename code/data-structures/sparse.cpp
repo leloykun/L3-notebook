@@ -1,5 +1,6 @@
 int lg[MAXN+1], spt[20][MAXN];
 void build(vi &arr, int n) {
+  lg[0] = lg[1] = 0;
   for (int i = 2; i <= n; ++i) lg[i] = lg[i>>1] + 1;
   for (int i = 0; i < n; ++i) spt[0][i] = arr[i];
   for (int j = 0; (2 << j) <= n; ++j)

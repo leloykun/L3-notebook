@@ -2,7 +2,7 @@
 #include <ext/pb_ds/tree_policy.hpp>
 using namespace __gnu_pbds;
 template <typename T>
-using indexed_set = std::tree<T, null_type, less<T>,
+using index_set = tree<T, null_type, std::less<T>,
 splay_tree_tag, tree_order_statistics_node_update>;
 // indexed_set<int> t; t.insert(...);
 // t.find_by_order(index); // 0-based

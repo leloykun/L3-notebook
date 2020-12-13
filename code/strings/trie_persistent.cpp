@@ -5,7 +5,7 @@ struct trie {
   std::vector<trie*> kids;
   trie () : val(-1), cnt(0), kids(MAX_KIDS, NULL) {}
   trie (int val) : val(val), cnt(0), kids(MAX_KIDS, NULL) {}
-  trie (int val, int cnt, std::vector<trie*> n_kids) :
+  trie (int val, int cnt, std::vector<trie*> &n_kids) :
     val(val), cnt(cnt), kids(n_kids) {}
   trie *insert(std::string &s, int i, int n) {
     trie *n_node = new trie(val, cnt+1, kids);

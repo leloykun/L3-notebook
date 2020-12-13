@@ -9,6 +9,7 @@ struct flow_network {
   ll *dist, *pot;
   std::vector<edge> edges;
   std::vector<int> *adj;
+  std::map<std::pair<int, int>, std::vector<int> > edge_idx;
   flow_network(int n, int s, int t) : n(n), s(s), t(t) {
     adj = new std::vector<int>[n];
     par = new int[n];
@@ -20,10 +21,18 @@ struct flow_network {
   }
   void add_edge(int u, int v, ll cap, ll cost) {
     adj[u].push_back(edges.size());
+    edge_idx[{u, v}].push_back(edges.size());
     edges.push_back(edge(u, v, cap, cost));
+
     adj[v].push_back(edges.size());
+    edge_idx[{v, u}].push_back(edges.size());
     edges.push_back(edge(v, u, 0LL, -cost));
   }
+  ll get_flow(int u, int v) {
+    ll f = 0;
+    for (int i : edge_idx[{u, v}])
+      f += edges[i].flow;
+    return f; }
   ll res(edge &e) { return e.cap - e.flow; }
   void bellman_ford() {
     for (int u = 0; u < n; ++u) pot[u] = INF;

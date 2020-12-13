@@ -23,7 +23,7 @@ for path, dirs, files in os.walk('./code'):
     for f in files:
         if (f.endswith(".cpp") or f.endswith('.java') or f.endswith('.sh') or f.endswith('.py')) and not f.endswith(".test.cpp"):
             p = os.path.join(path, f)
-            q = os.path.join("_code", '/'.join(path.split('\\')[1:]), f)
+            q = os.path.join("_code", '/'.join(path.split('/')[2:]), f)
             print(q)
 
             try:

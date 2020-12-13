@@ -3,7 +3,6 @@ struct graph {
   vi *adj, euler;
   graph(int n, int logn=20) : n(n), logn(logn) {
     adj = new vi[n];
-    roots = new segtree*[n];
     par = new int[n];
     dep = new int[n];
     first = new int[n];
