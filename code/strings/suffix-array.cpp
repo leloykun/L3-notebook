@@ -1,24 +1,36 @@
-// sa[i]: ith smallest substring at s[sa[i]:]
-// pos[i]: position of s[i:] in suffix array
-int sa[N], pos[N], va[N], c[N], gap, n;
-bool cmp(int i, int j) // reverse stable sort
-    {return pos[i]!=pos[j] ? pos[i] < pos[j] : j < i;}
-bool equal(int i, int j)
-    {return pos[i] == pos[j] && i + gap < n &&
-            pos[i + gap / 2] == pos[j + gap / 2];}
-void buildSA(string s) {
-    s += '$'; n = s.length();
-    for (int i = 0; i < n; i++){sa[i]=i; pos[i]=s[i];}
-    sort (sa, sa + n, cmp);
-    for (gap = 1; gap < n * 2; gap <<= 1) {
-        va[sa[0]] = 0;
-        for (int i = 1; i < n; i++) {
-            int prev = sa[i - 1], next = sa[i];
-            va[next] = equal(prev, next) ? va[prev] : i;
-        }
-        for (int i = 0; i < n; ++i)
-            { pos[i] = va[i]; va[i] = sa[i]; c[i] = i; }
-        for (int i = 0; i < n; i++) {
-            int id = va[i] - gap;
-            if (id >= 0) sa[c[pos[id]]++] = id;
-        }}}
+int n, equiv[N+1], suffix[N+1];
+ii equiv_pair[N+1];
+string T;
+void make_suffix_array(string& s) {
+  if (s.back()!='$') s += '$';
+  n = s.length();
+  for (int i = 0; i < n; i++)
+    suffix[i] = i;
+  sort(suffix,suffix+n,[&s](int i, int j){return s[i] < s[j];});
+  int sz = 0;
+  for(int i = 0; i < n; i++){
+    if(i==0 || s[suffix[i]]!=s[suffix[i-1]])
+      ++sz;
+    equiv[suffix[i]] = sz;
+  }
+  for (int t = 1; t < n; t<<=1) {
+    for (int i = 0; i < n; i++)
+      equiv_pair[i] = {equiv[i],equiv[(i+t)%n]};
+    sort(suffix, suffix+n, [](int i, int j) {
+         return equiv_pair[i] < equiv_pair[j];});
+    int sz = 0;
+    for (int i = 0; i < n; i++) {
+      if(i==0 || equiv_pair[suffix[i]]!=equiv_pair[suffix[i-1]])
+        ++sz;
+      equiv[suffix[i]] = sz;
+} } }
+int count_occurences(string& G) { // in string T
+  int L = 0, R = n-1;
+  for (int i = 0; i < G.length(); i++){
+    // lower/upper = first/last time G[i] is
+    // the ith character in suffixes from [L,R]
+    std::tie(L,R) = {lower(G[i],i,L,R), upper(G[i],i,L,R)};
+    if (L==-1 && R==-1) return 0;
+  }
+  return R-L+1;
+}

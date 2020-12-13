@@ -14,7 +14,8 @@ class prime_handler {
     if(exp&1) return mod_mult(base,mod_pow(base,exp-1,MOD),MOD);
     else return mod_pow(mod_mult(base,base,MOD),exp/2,MOD);
   }
-  vector<LL> good_bases = {2, 325, 9375, 28178, 450775, 9780504, 1795265022};
+  vector<LL> good_bases = {2, 325, 9375, 28178, 450775,
+                           9780504, 1795265022};
   bool sieve[N+1];
   vector<LL> primes;
   //deterministic up to 2^64
@@ -69,13 +70,4 @@ public:
   }
   LL kth_prime(int k) {
     return primes[k-1];
-  }
-};
-prime_handler primo;
-int main() {
-  int k;
-  LL lim = 1e18;
-  cin >> k;
-  cout << primo.next_prime(pow(lim,1.0/k),-1)<<endl;
-  return 0;
-}
+} };

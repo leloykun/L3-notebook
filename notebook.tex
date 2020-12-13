@@ -483,6 +483,11 @@
         p(n-1,k-1) + p(n-k,k) & n \ge k
     \end{cases}
     \]
+\section{DP}
+  \subsection{Dynamic Convex Hull Trick}
+    \code{dp/dynamic-ch-trick.cpp}
+  \subsection{Divide and Conquer Optimization}
+    \code{dp/divide-conquer-opt.cpp}
 \section{Geometry}
   \code{geom/compgeom.cpp}
 	\subsection{Dots and Cross Products}
@@ -590,8 +595,6 @@
   \subsection{DPLL Algorithm}
     A SAT solver that can solve a random 1000-variable SAT instance within a second.
     \code{other/dpll.cpp}
-  \subsection{Dynamic Convex Hull Trick}
-    \code{other/dynamic-ch-trick.cpp}
   \subsection{Stable Marriage}
     \ifverbose
     The Gale-Shapley algorithm for solving the stable marriage problem.
@@ -630,6 +633,22 @@
     that maximizes $\sum_{i=1}^{n-1}|p_i - p_{i+1}|$.
     \code{other/simulated_annealing.cpp}
   \subsection{Simplex}
+    \begin{verbatim}
+// Two-phase simplex algorithm for solving linear programs
+// of the form
+//     maximize     c^T x
+//     subject to   Ax <= b
+//                  x >= 0
+// INPUT: A -- an m x n matrix
+//        b -- an m-dimensional vector
+//        c -- an n-dimensional vector
+//        x -- a vector where the optimal solution will be
+//             stored
+// OUTPUT: value of the optimal solution (infinity if
+//                   unbounded above, nan if infeasible)
+// To use this code, create an LPSolver object with A, b,
+// and c as arguments.  Then, call Solve(x).
+    \end{verbatim}
     \code{other/simplex.cpp}
   \subsection{Fast Square Testing}
     An optimized test for square integers.
