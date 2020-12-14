@@ -13,5 +13,4 @@ std::vector<point> CL_inter(point c, double r,
     p = c + (p - c) * r / d;
     ans.push_back(rotate(c, p, t));
     ans.push_back(rotate(c, p, -t));
-  } return ans;
-}
+  } return ans; }

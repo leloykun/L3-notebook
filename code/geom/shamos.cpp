@@ -5,7 +5,6 @@ double shamos(point p[], int n) {
   for (int i = 0, j = 1; i < k; ++i) {
     while (distPtLine(h[j+1], h[i], h[i+1]) >=
            distPtLine(h[j], h[i], h[i+1])) {
-      j = (j + 1) % k;
-    }
+      j = (j + 1) % k; }
     d = min(d, distPtLine(h[j], h[i], h[i+1]));
   } return d; }

@@ -1,5 +1,5 @@
-pair<point, double> bounding_ball(point p[], int n){
-  random_shuffle(p, p + n);
+std::pair<point, double> bounding_ball(point p[], int n){
+  std::random_shuffle(p, p + n);
   point center(0, 0); double radius = 0;
   for (int i = 0; i < n; ++i) {
     if (dist(center, p[i]) > radius + EPS) {
@@ -12,8 +12,6 @@ pair<point, double> bounding_ball(point p[], int n){
           radius = dist(center, p[i]); // midpoint
           for (int k = 0; k < j; ++k)
             if (dist(center, p[k]) > radius + EPS) {
-              center=circumcenter(p[i], p[j], p[k]);
-              radius = dist(center, p[i]);
-            }}}}
-  return make_pair(center, radius);
-}
+              center = circumcenter(p[i], p[j], p[k]);
+              radius = dist(center, p[i]); } } } }
+  return {center, radius}; }

@@ -13,5 +13,4 @@ std::vector<point> CC_intersection(point c1,
     ans.push_back(rotate(c1, mid, t));
     if (abs(sin(t)) >= EPS)
       ans.push_back(rotate(c2, mid, -t));
-  } return ans;
-}
+  } return ans; }

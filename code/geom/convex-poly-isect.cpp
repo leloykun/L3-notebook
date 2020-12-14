@@ -1,5 +1,5 @@
-std::vector<point> convex_polygon_inter(point a[],
-    int an, point b[], int bn) {
+std::vector<point> convex_polygon_inter(
+    point a[], int an, point b[], int bn) {
   point ans[an + bn + an*bn];
   int size = 0;
   for (int i = 0; i < an; ++i)
@@ -13,8 +13,6 @@ std::vector<point> convex_polygon_inter(point a[],
       try {
         point p=line_inter(a[i],a[I],b[j],b[J],true);
         ans[size++] = p;
-      } catch (exception ex) {}
-    }
+      } catch (exception ex) {} }
   size = convex_hull(ans, size);
-  return vector<point>(ans, ans + size);
-}
+  return vector<point>(ans, ans + size); }

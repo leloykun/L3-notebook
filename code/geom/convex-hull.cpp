@@ -1,8 +1,8 @@
 // counterclockwise hull in p[], returns size of hull
-bool xcmp(const point& a, const point& b)
-  {return a.x < b.x || (a.x == b.x && a.y < b.y);}
+bool xcmp(const point& a, const point& b) {
+  return a.x < b.x || (a.x == b.x && a.y < b.y); }
 int convex_hull(point p[], int n) {
-  sort(p, p + n, xcmp); if (n <= 1) return n;
+  std::sort(p, p + n, xcmp); if (n <= 1) return n;
   int k = 0; point *h = new point[2 * n];
   double zer = EPS; // -EPS to include collinears
   for (int i = 0; i < n; h[k++] = p[i++])
