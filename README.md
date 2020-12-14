@@ -5,7 +5,7 @@ A collection of algorithms, data structures and other useful information for com
 - clone this repository using `git clone https://github.com/leloykun/admu-progvar-notebook.git`
 - add codes to the folder `/code` and edit `notebook.tex`
 - install latex with `sudo apt install texlive-full` (warning: this could take up 5Gb of space)
-- install `Pygments` with `pip3 install Pygments`
+- install `Pygments` with `pip3 install Pygments` or `pip install Pygments`
 - run `makefile.sh`
 - submit a pull request
 - ...
