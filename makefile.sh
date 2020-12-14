@@ -1,3 +1,4 @@
+rm -f *.{aux,log,toc,fls,fdb_latexmk}
 python3 preprocess.py
 pdflatex -shell-escape notebook.tex
 pdflatex -shell-escape notebook.tex
