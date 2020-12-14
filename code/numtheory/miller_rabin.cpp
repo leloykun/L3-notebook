@@ -1,19 +1,32 @@
-#include "mod_pow.cpp"
-bool is_probable_prime(ll n, int k) {
-  if (~n & 1) return n == 2;
-  if (n <= 3) return n == 3;
-  int s = 0; ll d = n - 1;
-  while (~d & 1) d >>= 1, s++;
-  while (k--) {
-    ll a = (n - 3) * rand() / RAND_MAX + 2;
-    ll x = mod_pow(a, d, n);
-    if (x == 1 || x == n - 1) continue;
-    bool ok = false;
-    rep(i,0,s-1) {
-      x = (x * x) % n;
-      if (x == 1) return false;
-      if (x == n - 1) { ok = true; break; }
-    }
-    if (!ok) return false;
-  } return true; }
-// vim: cc=60 ts=2 sts=2 sw=2:
+bool sieve[LIM+1];// remember to sieve up to some LIM
+vector<ll> primes;
+//deterministic up to 2^64
+ll good_bases[] = {2,325,9375,28178,450775,9780504,1795265022};
+// remember mod_pow and mod_mult
+bool witness(ll a,ll n) {
+  ll t = 0, u = n-1;
+  while(u % 2 ==0){
+    u >>= 1;
+    t += 1; }
+  ll xp = 1, xi = mod_pow(a,u,n);
+  for (int i = 0; i < t; i++) {
+    xp = xi;
+    xi = mod_mult(xi, xi, n);
+    if (xi == 1 && !(xp == 1 || xp == n-1)) return true;
+  }
+  if (xi!=1) return true;
+  else return false;
+}
+bool miller_rabin(ll n) {
+  if (n <= 1)   return false;
+  if (n == 2)   return true;
+  if (n%2 == 0) return false;
+  if (n <= LIM) return sieve[n];
+  for (const ll& x : good_bases) {
+    ll a = x;
+    a = a%n;
+    if (a == 0)       return true;
+    if (witness(a,n)) return false;
+  }
+  return true;
+}

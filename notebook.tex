@@ -99,13 +99,23 @@
 \section{Code Templates}
 	\code{header.cpp}
 \section{Data Structures}
-  \subsection{Union Find}
-    \code{data-structures/union_find.cpp}
   \subsection{Fenwick Tree}
-		\subsubsection{Fenwick Tree w/ Point Queries}
-			\code{data-structures/fenwick.cpp}
+    \subsubsection{Fenwick Tree w/ Point Queries}
+      \code{data-structures/fenwick.cpp}
     \subsubsection{Fenwick Tree w/ Max Queries}
       \code{data-structures/fenwick_max.cpp}
+  \subsection{Leq Counter}
+    \subsubsection{Leq Counter Array}
+      \code{data-structures/leq_counter_ar.cpp}
+    \subsubsection{Leq Counter Map}
+      \code{data-structures/leq_counter_map.cpp}
+  \subsectionRed{Misof Tree}
+    A simple tree data structure for inserting, erasing, and querying the nth largest element.
+    \code{data-structures/misof_tree.cpp}
+  \subsection{Mo's Algorithm}
+    \code{data-structures/mo.cpp}
+	\subsection{Ordered Statistics Tree}
+    \code{data-structures/ordered_statistics_tree.cpp}
   \subsection{Segment Tree}
     \subsubsection{Recursive, Point-update Segment Tree}
       \code{data-structures/segtree_rec_PU_RQ.cpp}
@@ -119,29 +129,21 @@
       \code{data-structures/segtree_2d.cpp}
     \subsubsection{Persistent Segment Tree}
       \code{data-structures/segtree_persistent_rec.cpp}
-  \subsection{Leq Counter}
-    \subsubsection{Leq Counter Array}
-      \code{data-structures/leq_counter_ar.cpp}
-    \subsubsection{Leq Counter Map}
-      \code{data-structures/leq_counter_map.cpp}
-  \subsection{Unique Counter}
-    \code{data-structures/unique_counter.cpp}
-  \subsection{Treap}
-		\subsubsection{Implicit Treap}
-			\code{data-structures/treap_implicit.cpp}
-		\subsubsectionBlack{Persistent Treap}
-  \subsectionRed{Splay Tree}
-    \code{data-structures/splay.cpp}
-	\subsection{Ordered Statistics Tree}
-    \code{data-structures/ordered_statistics_tree.cpp}
   \subsection{Sparse Table}
     \subsubsection{1D Sparse Table}
       \code{data-structures/sparse.cpp}
     \subsubsectionRed{2D Sparse Table}
       \code{data-structures/sparse_2d.cpp}
-  \subsectionRed{Misof Tree}
-    A simple tree data structure for inserting, erasing, and querying the nth largest element.
-    \code{data-structures/misof_tree.cpp}
+  \subsectionRed{Splay Tree}
+    \code{data-structures/splay.cpp}
+  \subsection{Treap}
+		\subsubsection{Implicit Treap}
+			\code{data-structures/treap_implicit.cpp}
+		\subsubsectionBlack{Persistent Treap}
+  \subsection{Union Find}
+    \code{data-structures/union_find.cpp}
+  \subsection{Unique Counter}
+    \code{data-structures/unique_counter.cpp}
 \section{Graphs}
 	Using adjacency list:
 	\code{graphs/graph_template_adjlist.cpp}
@@ -196,11 +198,12 @@
 			\code{graphs/max_flow/edmonds_karp.cpp}
 		\subsubsection{Dinic}
 			\code{graphs/max_flow/dinic.cpp}
+    \subsubsectionRed{Gomory-Hu (All-pairs Maximum Flow)}
+      \code{graphs/max_flow/gomory_hu_tree.cpp}
   \subsection{Minimum Cost Maximum Flow}
     \code{graphs/max_flow/mcst.cpp}
-  \subsectionRed{All-pairs Maximum Flow}
-    \subsubsectionRed{Gomory-Hu}
-      \code{graphs/max_flow/gomory_hu_tree.cpp}
+    \subsubsection{Hungarian Algorithm}
+      \code{graphs/max_flow/hungarian.cpp}
   \subsectionRed{Minimum Arborescence}
     Given a weighted directed graph, finds a subset of edges of minimum
     total weight so that there is a unique path from the root $r$ to each
@@ -381,18 +384,22 @@
     To count all solutions, let $n = \left\lfloor\dfrac{c}{a}\right\rfloor$.
     In any case, it must hold that $C-nA \geq 0$. Be very careful about overflows.
 \section{Algebra}
+  \subsection{Generating Function Manager}
+    \code{algebra/generating_function_manager.cpp}
   \subsection{Fast Fourier Transform}
     Compute the Discrete Fourier Transform (DFT) of a polynomial in $O(n \log n)$ time.
     \code{algebra/fft.cpp}
   \subsection{FFT Polynomial Multiplication}
     Multiply integer polynomials $a, b$ of size $an, bn$ using FFT in $O(n \log n)$. Stores answer in an array $c$, rounded to the nearest integer (or double).
     \code{algebra/fft-poly-mul.cpp}
+
   \subsection{Number Theoretic Transform}
     Other possible moduli: $2 113 929 217 (2^{25}), 2 013 265 920 268 435 457 (2^{28}, with g = 5)$
     \code{algebra/ntt.cpp}
   \subsection{Polynomial Long Division}
     Divide two polynomials $A$ and $B$ to get $Q$ and $R$, where $\frac{A}{B} = Q + \frac{R}{B}$.
     \code{algebra/poly-long-div.cpp}
+
   \subsection{Matrix Multiplication}
     Multiplies matrices $A_{p\times q}$ and $B_{q\times r}$ in $O(n^3)$ time, modulo \texttt{MOD}.
     \code{algebra/matmul.java}

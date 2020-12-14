@@ -1,6 +1,6 @@
 struct graph {
   int n, logn, *par, *dep, *first, *lg, **spt;
-  vi *adj, euler;
+  vi *adj, euler; // spt size should be ~ 2n
   graph(int n, int logn=20) : n(n), logn(logn) {
     adj = new vi[n];
     par = new int[n];
