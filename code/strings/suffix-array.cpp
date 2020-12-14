@@ -11,8 +11,7 @@ void make_suffix_array(string& s) {
   for(int i = 0; i < n; i++){
     if(i==0 || s[suffix[i]]!=s[suffix[i-1]])
       ++sz;
-    equiv[suffix[i]] = sz;
-  }
+    equiv[suffix[i]] = sz; }
   for (int t = 1; t < n; t<<=1) {
     for (int i = 0; i < n; i++)
       equiv_pair[i] = {equiv[i],equiv[(i+t)%n]};
@@ -22,15 +21,12 @@ void make_suffix_array(string& s) {
     for (int i = 0; i < n; i++) {
       if(i==0 || equiv_pair[suffix[i]]!=equiv_pair[suffix[i-1]])
         ++sz;
-      equiv[suffix[i]] = sz;
-} } }
+      equiv[suffix[i]] = sz; } } }
 int count_occurences(string& G) { // in string T
   int L = 0, R = n-1;
   for (int i = 0; i < G.length(); i++){
     // lower/upper = first/last time G[i] is
     // the ith character in suffixes from [L,R]
     std::tie(L,R) = {lower(G[i],i,L,R), upper(G[i],i,L,R)};
-    if (L==-1 && R==-1) return 0;
-  }
-  return R-L+1;
-}
+    if (L==-1 && R==-1) return 0; }
+  return R-L+1; }

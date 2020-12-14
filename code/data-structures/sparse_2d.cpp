@@ -27,14 +27,11 @@ void build(int n, int m) {
             std::max(std::max(st[bi][bj][i][j],
                               st[bi][bj][ik][j]),
                      std::max(st[bi][bj][i][jk],
-                              st[bi][bj][ik][jk]));
-        }
-}
+                              st[bi][bj][ik][jk])); } }
 int query(int x1, int x2, int y1, int y2) {
   int kx = lg[x2 - x1 + 1],   ky = lg[y2 - y1 + 1];
   int x12 = x2 - (1<<kx) + 1, y12 = y2 - (1<<ky) + 1;
   return std::max(std::max(st[kx][ky][x1][y1],
                            st[kx][ky][x1][y12]),
                   std::max(st[kx][ky][x12][y1],
-                           st[kx][ky][x12][y12]));
-}
+                           st[kx][ky][x12][y12])); }

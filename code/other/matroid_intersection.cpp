@@ -35,4 +35,3 @@ struct MatroidIntersection {
     iter(it,r)remove(arr[*it]),swap(arr[--found],arr[*it]);
     iter(it,a)add(arr[*it]),swap(arr[found++],arr[*it]);
     weight -= d[n].first; return true; } };
-// vim: cc=60 ts=2 sts=2 sw=2:

@@ -22,8 +22,9 @@
 \usepackage{color}
 \usepackage{xcolor}
 \usepackage{soul}
+\usepackage{comment}
 
-\setcounter{tocdepth}{3}
+\setcounter{tocdepth}{2}
 
 \newcommand{\subtitle}[1]{%
   \posttitle{%
@@ -96,14 +97,13 @@
 
 % \clearpage
 
+\begin{comment}
 \section{Code Templates}
 	\code{header.cpp}
+\end{comment}
 \section{Data Structures}
   \subsection{Fenwick Tree}
-    \subsubsection{Fenwick Tree w/ Point Queries}
-      \code{data-structures/fenwick.cpp}
-    \subsubsection{Fenwick Tree w/ Max Queries}
-      \code{data-structures/fenwick_max.cpp}
+    \code{data-structures/fenwick.cpp}
   \subsection{Leq Counter}
     \subsubsection{Leq Counter Array}
       \code{data-structures/leq_counter_ar.cpp}
@@ -117,8 +117,10 @@
 	\subsection{Ordered Statistics Tree}
     \code{data-structures/ordered_statistics_tree.cpp}
   \subsection{Segment Tree}
-    \subsubsection{Recursive, Point-update Segment Tree}
-      \code{data-structures/segtree_rec_PU_RQ.cpp}
+    \subsubsectionBlack{Recursive, Point-update Segment Tree}
+\begin{comment}
+        \code{data-structures/segtree_rec_PU_RQ.cpp}
+\end{comment}
     \subsubsection{Iterative, Point-update Segment Tree}
       \code{data-structures/segtree_iter_PU_RQ.cpp}
     \subsubsection{Pointer-based, Range-update Segment Tree}
@@ -145,12 +147,14 @@
   \subsection{Unique Counter}
     \code{data-structures/unique_counter.cpp}
 \section{Graphs}
+\begin{comment}
 	Using adjacency list:
 	\code{graphs/graph_template_adjlist.cpp}
 	Using adjacency matrix:
 	\code{graphs/graph_template_adjmat.cpp}
 	Using edge list:
 	\code{graphs/graph_template_edgelist.cpp}
+\end{comment}
 	\subsection{Single-Source Shortest Paths}
 		\subsubsection{Dijkstra}
 			\code{graphs/shortest_paths/dijkstra.cpp}
@@ -267,7 +271,8 @@
       \code{graphs/lca/binary_lifting.cpp}
     \subsubsection{Euler Tour Sparse Table}
       \code{graphs/lca/lca_sparse_table.cpp}
-    \subsubsectionBlack{Tarjan Off-line LCA}
+    \subsubsection{Tarjan Off-line LCA}
+      \code{graphs/lca/tarjan.cpp}
   \subsection{Counting Spanning Trees}
     Kirchoff's Theorem: The number of spanning trees of any graph is the
     determinant of any cofactor of the Laplacian matrix in $O(n^3)$.
@@ -323,10 +328,12 @@
     \subsubsection{Rolling Hash}
       \code{strings/rolling_hash.cpp}
 \section{Number Theory}
-	\subsection{Eratosthenes Prime Sieve}
+\begin{comment}
+  \subsection{Eratosthenes Prime Sieve}
     \code{numtheory/prime-sieve.cpp}
   \subsection{Divisor Sieve}
     \code{numtheory/divisor-sieve.cpp}
+\end{comment}
   \subsection{Number/Sum of Divisors}
     If a number $n$ is prime factorized where $n = {p_1}^{e_1} \times {p_2}^{e_2} \times \cdots \times {p_k}^{e_k}$, where $\sigma_0$ is the number of divisors while $\sigma_1$ is the sum of divisors:
     \[
@@ -349,9 +356,11 @@
   \subsection{Euler Totient}
     Counts all integers from 1 to $n$ that are relatively prime to $n$ in $O(\sqrt{n})$ time.
     \code{numtheory/totient.cpp}
+\begin{comment}
   \subsection{Euler Phi Sieve}
     Sieve version of Euler totient, runs in $O(N \log N)$ time. Note that $n = \sum_{d\mid n} \varphi(d)$.
     \code{numtheory/phi-sieve.cpp}
+\end{comment}
   \subsection{Extended Euclidean}
     Assigns $x,y$ such that $ax + by = \gcd(a,b)$ and returns $\gcd(a,b)$.
     \code{numtheory/extended-euclidean.cpp}
@@ -392,14 +401,12 @@
   \subsection{FFT Polynomial Multiplication}
     Multiply integer polynomials $a, b$ of size $an, bn$ using FFT in $O(n \log n)$. Stores answer in an array $c$, rounded to the nearest integer (or double).
     \code{algebra/fft-poly-mul.cpp}
-
   \subsection{Number Theoretic Transform}
     Other possible moduli: $2 113 929 217 (2^{25}), 2 013 265 920 268 435 457 (2^{28}, with g = 5)$
     \code{algebra/ntt.cpp}
   \subsection{Polynomial Long Division}
     Divide two polynomials $A$ and $B$ to get $Q$ and $R$, where $\frac{A}{B} = Q + \frac{R}{B}$.
     \code{algebra/poly-long-div.cpp}
-
   \subsection{Matrix Multiplication}
     Multiplies matrices $A_{p\times q}$ and $B_{q\times r}$ in $O(n^3)$ time, modulo \texttt{MOD}.
     \code{algebra/matmul.java}
@@ -607,6 +614,7 @@
     The Gale-Shapley algorithm for solving the stable marriage problem.
     \fi
     \code{other/stable_marriage.cpp}
+\begin{comment}
   \subsection{Algorithm X}
     \ifverbose
     An implementation of Knuth's Algorithm X, using dancing links. Solves the Exact Cover problem.
@@ -617,6 +625,7 @@
     matroids, specified by implementing the required abstract methods, in
     $O(n^3(M_1+M_2))$.
     \code{other/matroid_intersection.cpp}
+\end{comment}
   \subsection{$n$th Permutation}
     \ifverbose
     A very fast algorithm for computing the $n$th permutation of the list

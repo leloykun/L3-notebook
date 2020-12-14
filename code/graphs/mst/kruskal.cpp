@@ -12,6 +12,4 @@ void kruskal(viii &res) {
     int u = node.second.first;
     int v = node.second.second;
     if (uf.unite(u, v))
-      res.push_back(node);
-  }
-}
+      res.push_back(node); } }

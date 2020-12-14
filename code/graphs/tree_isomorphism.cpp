@@ -45,5 +45,4 @@ bool isomorphic(int r1, vector<int> adj1[], int r2,
                 vector<int> adj2[], bool rooted = false) {
     if (rooted)
         return rootcode(r1, adj1) == rootcode(r2, adj2);
-    return treecode(r1, adj1) == treecode(r2, adj2);
-}
+    return treecode(r1, adj1) == treecode(r2, adj2); }

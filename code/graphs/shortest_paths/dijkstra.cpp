@@ -18,8 +18,4 @@ void dijkstra(int s) {
       int w = e.second;
       if (dist[v] > dist[u] + w) {
         dist[v] = dist[u] + w;
-        pq.push({dist[v], v});
-      }
-    }
-  }
-}
+        pq.push({dist[v], v}); } } } }

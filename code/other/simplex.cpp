@@ -1,11 +1,11 @@
 typedef long double DOUBLE;
 typedef vector<DOUBLE> VD;
 typedef vector<VD> VVD;
-typedef vector<int> VI;
+typedef vector<int> vi;
 const DOUBLE EPS = 1e-9;
 struct LPSolver {
  int m, n;
- VI B, N;
+ vi B, N;
  VVD D;
  LPSolver(const VVD &A, const VD &b, const VD &c) :
   m(b.size()), n(c.size()),

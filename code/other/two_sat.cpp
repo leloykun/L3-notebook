@@ -34,4 +34,3 @@ struct TwoSat {
     rep(i,0,2*n+1)
       if (i != n && V[i].num == -1 && !dfs(i)) return false;
     return true; } };
-// vim: cc=60 ts=2 sts=2 sw=2:

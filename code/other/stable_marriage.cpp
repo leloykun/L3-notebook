@@ -13,4 +13,3 @@ vi stable_marriage(int n, int** m, int** w) {
       else continue;
       res[eng[curw] = curm] = curw, ++i; break; } }
   return res; }
-// vim: cc=60 ts=2 sts=2 sw=2:

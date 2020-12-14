@@ -5,8 +5,7 @@ bool spfa(int s) {
   for (int u = 0; u < n; ++u) {
     dist[u] = INF;
     in_queue[u] = 0;
-    num_vis[u] = 0;
-  }
+    num_vis[u] = 0; }
   dist[s] = 0;
   in_queue[s] = 1;
   bool has_negative_cycle = false;
@@ -20,9 +19,5 @@ bool spfa(int s) {
         dist[v] = dist[u] + c;
         if (!in_queue[v]) {
           q.push(v);
-          in_queue[v] = 1;
-        }
-      }
-  }
-  return has_negative_cycle;
-}
+          in_queue[v] = 1; } } }
+  return has_negative_cycle; }

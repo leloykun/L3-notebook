@@ -1,3 +1,4 @@
+#include "segtree.cpp"
 struct LeqCounter {
   segtree **roots;
   LeqCounter(int *ar, int n) {
@@ -12,11 +13,8 @@ struct LeqCounter {
       for (int i = prev+1; i < e.first; ++i)
         roots[i] = roots[prev];
       roots[e.first] = roots[prev]->update(e.second, 1);
-      prev = e.first;
-    }
+      prev = e.first; }
     for (int i = prev+1; i < n; ++i)
-      roots[i] = roots[prev];
-  }
+      roots[i] = roots[prev]; }
   int count(int i, int j, int x) {
-    return roots[x]->query(i, j);
-} };
+    return roots[x]->query(i, j); } };

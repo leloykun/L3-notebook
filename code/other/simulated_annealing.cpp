@@ -36,4 +36,3 @@ int simulated_annealing(int n, double seconds) {
     }
     iters++; }
   return score; }
-// vim: cc=60 ts=2 sts=2 sw=2:

@@ -10,13 +10,11 @@ struct flow_network {
       c[i] = new int[n];
       f[i] = new int[n];
       for (int j = 0; j < n; ++j)
-        c[i][j] = f[i][j] = 0;
-  } }
+        c[i][j] = f[i][j] = 0; } }
   void add_edge(int u, int v, int w) {
     adj[u].push_back(v);
     adj[v].push_back(u);
-    c[u][v] += w;
-  }
+    c[u][v] += w; }
   int res(int i, int j) { return c[i][j] - f[i][j]; }
   bool bfs() {
     std::queue<int> q;
@@ -28,16 +26,12 @@ struct flow_network {
           par[v] = u;
           if (v == this->t)
             return true;
-          q.push(v);
-    } } }
-    return false;
-  }
+          q.push(v); } } }
+    return false; }
   bool aug_path() {
-    for (int u = 0; u < n; ++u)
-      par[u] = -1;
+    for (int u = 0; u < n; ++u) par[u] = -1;
     par[s] = s;
-    return bfs();
-  }
+    return bfs(); }
   int calc_max_flow() {
     int ans = 0;
     while (aug_path()) {
@@ -46,7 +40,5 @@ struct flow_network {
         flow = std::min(flow, res(par[u], u));
       for (int u = t; u != s; u = par[u])
         f[par[u]][u] += flow, f[u][par[u]] -= flow;
-      ans += flow;
-    }
-    return ans;
-} };
+      ans += flow; }
+    return ans; } };

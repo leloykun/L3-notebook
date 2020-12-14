@@ -21,13 +21,11 @@ struct segtree {
     else {
       segtree *nl = l->update(_i, _val);
       segtree *nr = r->update(_i, _val);
-      return new segtree(i, j, nl, nr, nl->val + nr->val);
-  } }
+      return new segtree(i, j, nl, nr, nl->val + nr->val); } }
   int query(int _i, int _j) {
     if (_i <= i and j <= _j)
       return val;
     else if (_j < i or j < _i)
       return 0;
     else
-      return l->query(_i, _j) + r->query(_i, _j);
-} };
+      return l->query(_i, _j) + r->query(_i, _j); } };

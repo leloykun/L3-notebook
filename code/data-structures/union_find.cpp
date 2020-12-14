@@ -5,8 +5,5 @@ struct union_find {
     int xp = find(x), yp = find(y);
     if (xp == yp)       return false;
     if (p[xp] > p[yp])  std::swap(xp,yp);
-    p[xp] += p[yp], p[yp] = xp;
-    return true;
-  }
-  int size(int x) { return -p[find(x)]; }
-};
+    p[xp] += p[yp], p[yp] = xp; return true; }
+  int size(int x) { return -p[find(x)]; } };

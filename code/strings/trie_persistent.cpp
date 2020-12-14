@@ -14,9 +14,7 @@ struct trie {
       n_node->kids[s[i]-BASE] = new trie(s[i]);
     n_node->kids[s[i]-BASE] =
       n_node->kids[s[i]-BASE]->insert(s, i+1, n);
-    return n_node;
-  }
-};
+    return n_node; } };
 // max xor on a binary trie from version `a+1` to `b` (b > a):
 int get_max_xor(trie *a, trie *b, int x) {
   int ans = 0;
@@ -28,7 +26,5 @@ int get_max_xor(trie *a, trie *b, int x) {
     if (res_cnt == 0) u ^= 1;
     ans ^= (u << i);
     if (a) a = a->kids[u];
-    if (b) b = b->kids[u];
-  }
-  return ans;
-}
+    if (b) b = b->kids[u]; }
+  return ans; }

@@ -6,9 +6,7 @@ struct segtree_2d {
     for (int i = 0; i < n; ++i) {
       ar[i] = new int[m];
       for (int j = 0; j < m; ++j)
-        ar[i][j] = 0;
-    }
-  }
+        ar[i][j] = 0; } }
   void update(int x, int y, int v) {
     ar[x + n][y + m] = v;
     for (int i = x + n; i > 0; i >>= 1) {
@@ -24,6 +22,4 @@ struct segtree_2d {
     } else for (int a=y1+m, b=y2+m+1; a<b; a>>=1, b>>=1) {
       if (a & 1) s = min(s, ar[x1][a++]);
       if (b & 1) s = min(s, ar[x1][--b]);
-    } return s;
-  }
-};
+    } return s; } };

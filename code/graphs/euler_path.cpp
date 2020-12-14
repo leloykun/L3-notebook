@@ -25,4 +25,3 @@ bool euler_path() {
       cur = s.top(); s.pop();
     } else s.push(cur), cur = adj[cur][--outdeg[cur]]; }
   return at == 0; }
-// vim: cc=60 ts=2 sts=2 sw=2:

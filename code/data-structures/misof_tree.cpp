@@ -11,4 +11,3 @@ struct misof_tree {
     for (int i = BITS-1; i >= 0; i--)
       if (cnt[i][res <<= 1] <= n) n -= cnt[i][res], res |= 1;
     return res; } };
-// vim: cc=60 ts=2 sts=2 sw=2:

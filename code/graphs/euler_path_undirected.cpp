@@ -17,4 +17,3 @@ list<int>::iterator euler(int at, int to,
       to = -1; } }
   return it; }
 // euler(0,-1,L.begin())
-// vim: cc=60 ts=2 sts=2 sw=2:

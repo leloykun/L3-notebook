@@ -6,12 +6,10 @@ struct graph {
   graph (int n) : n(n) {
     adj = new vi[n];
     disc = new int[n];
-    low = new int[n];
-  }
+    low = new int[n]; }
   void add_edge(int u, int v) {
     adj[u].push_back(v);
-    adj[v].push_back(u);
-  }
+    adj[v].push_back(u); }
   void _bridges_artics(int u, int p) {
     disc[u] = low[u] = TIME++;
     stk.push_back(u);
@@ -22,25 +20,19 @@ struct graph {
         _bridges_artics(v, u);
         children++;
         if (disc[u] < low[v])
-          bridges.insert({
-            std::min(u, v),
-            std::max(u, v)
-          });
+          bridges.insert({std::min(u, v), std::max(u, v)});
         if (disc[u] <= low[v]) {
           has_low_child = true;
           comps.push_back({u});
           while (comps.back().back() != v and !stk.empty()) {
             comps.back().push_back(stk.back());
-            stk.pop_back();
-        } }
+            stk.pop_back(); } }
         low[u] = std::min(low[u], low[v]);
       } else if (v != p)
-        low[u] = std::min(low[u], disc[v]);
-    }
+        low[u] = std::min(low[u], disc[v]); }
     if ((p == -1 && children >= 2) ||
         (p != -1 && has_low_child))
-      articulation_points.push_back(u);
-  }
+      articulation_points.push_back(u); }
   void bridges_artics() {
     for (int u = 0; u < n; ++u)   disc[u] = -1;
     stk.clear();
@@ -49,5 +41,4 @@ struct graph {
     comps.clear();
     TIME = 0;
     for (int u = 0; u < n; ++u) if (disc[u] == -1)
-      _bridges_artics(u, -1);
-} };
+      _bridges_artics(u, -1); } };

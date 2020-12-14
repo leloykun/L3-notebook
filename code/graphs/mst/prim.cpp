@@ -12,7 +12,4 @@ void prim(viii &res, int s=0) {
       if (v == u)   continue;
       if (vis[v])   continue;
       res.push_back({w, {u, v}});
-      pq.push({w, v});
-    }
-  }
-}
+      pq.push({w, v}); } } }

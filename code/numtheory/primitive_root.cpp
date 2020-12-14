@@ -11,4 +11,3 @@ ll primitive_root(ll m) {
       ok = false; break; }
     if (ok) return x; }
   return -1; }
-// vim: cc=60 ts=2 sts=2 sw=2:

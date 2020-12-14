@@ -53,4 +53,3 @@ struct SAT {
       if (!assume(cl[head[i]])) return false;
     return bt(); }
   bool get_value(int x) { return val[IDX(x)]; } };
-// vim: cc=60 ts=2 sts=2 sw=2:

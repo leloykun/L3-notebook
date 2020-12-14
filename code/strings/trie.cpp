@@ -42,4 +42,3 @@ struct trie {
         it = cur->children.find(head);
         if (it == cur->children.end()) return 0;
         begin++, cur = it->second; } } } };
-// vim: cc=60 ts=2 sts=2 sw=2:

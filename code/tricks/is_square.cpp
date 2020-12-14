@@ -10,4 +10,3 @@ inline bool is_square(ll x) {
   if ((x&7) - 1) return false;
   ll r = sqrt(x);
   return r*r == x; }
-// vim: cc=60 ts=2 sts=2 sw=2:

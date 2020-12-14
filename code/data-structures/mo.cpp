@@ -14,8 +14,7 @@ struct query {
     ll ans = seg * sub_sq_size;
     ll add = hilbert_order(nx, ny, pow-1, nrot);
     ans += (seg==1 || seg==2) ? add : (sub_sq_size-add-1);
-    return ans;
-  }
+    return ans; }
   bool operator<(const query& other) const {
     return this->hilbert_index < other.hilbert_index; } };
 std::vector<query> queries;
@@ -25,5 +24,4 @@ for(const query &q : queries) {  // [l,r] inclusive
   r--;
   for( ; l < q.l; l++)        update(l, -1);
   for(l = l-1; l >= q.l; l--) update(l);
-  l++;
-}
+  l++; }

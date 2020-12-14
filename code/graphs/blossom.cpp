@@ -81,4 +81,3 @@ vii max_matching(const vector<vi> &adj) {
   } while (!ap.empty());
   rep(i,0,size(m)) if (i < m[i]) res.emplace_back(i, m[i]);
   return res; }
-// vim: cc=60 ts=2 sts=2 sw=2:

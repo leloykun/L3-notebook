@@ -19,8 +19,7 @@ struct centroid_decomposition {
     int bad = -1;
     rep(i,0,size(adj[u])) {
       if (adj[u][i] == p) bad = i;
-      else makepaths(sep, adj[u][i], u, len + 1);
-    }
+      else makepaths(sep, adj[u][i], u, len + 1); }
     if (p == sep)
       swap(adj[u][bad], adj[u].back()), adj[u].pop_back(); }
   void separate(int h=0, int u=0) {
@@ -39,4 +38,3 @@ struct centroid_decomposition {
     rep(h,0,seph[u]+1)
       mn = min(mn, path[u][h] + shortest[jmp[u][h]]);
     return mn; } };
-// vim: cc=60 ts=2 sts=2 sw=2:

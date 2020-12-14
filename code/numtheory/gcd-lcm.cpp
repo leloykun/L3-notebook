@@ -1,2 +1,2 @@
-LL gcd(LL a, LL b) {return b==0 ? a : gcd(b, a%b);}
-LL lcm(LL a, LL b) {return a / gcd(a, b) * b;}
+ll gcd(ll a, ll b) {return b==0 ? a : gcd(b, a%b);}
+ll lcm(ll a, ll b) {return a / gcd(a, b) * b;}

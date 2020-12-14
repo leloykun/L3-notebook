@@ -6,8 +6,7 @@ struct node {
   node(int start, int end, int len, int back_edge) :
        start(start), end(end), len(len), back_edge(back_edge) {
     adj = new int[26];
-    for (int i = 0; i < 26; ++i)  adj[i] = 0;
-} };
+    for (int i = 0; i < 26; ++i)  adj[i] = 0; } };
 struct eertree {
   int ptr, cur_node;
   std::vector<node> tree;
@@ -42,9 +41,7 @@ struct eertree {
       tree[cur_node].back_edge = 2;
       return; }
     temp = get_link(temp, s, i);
-    tree[cur_node].back_edge = tree[temp].adj[s[i]-'a'];
-  }
+    tree[cur_node].back_edge = tree[temp].adj[s[i]-'a']; }
   void insert(std::string &s) {
     for (int i = 0; i < s.size(); ++i)
-      insert(s, i);
-} };
+      insert(s, i); } };
