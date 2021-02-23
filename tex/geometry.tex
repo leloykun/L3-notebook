@@ -41,9 +41,16 @@
     Get the centroid/center of mass of a polygon in $O(m)$.
     \code{geom/poly-centroid.cpp}
   \subsection{Convex Hull}
-    Get the convex hull of a set of points using Graham-Andrew's scan. This sorts the
-    points at $O(n \log n)$, then performs the Monotonic Chain Algorithm at $O(n)$.
-    \code{geom/convex-hull.cpp}
+    \subsubsection{2D Convex Hull}
+      Get the convex hull of a set of points using Graham-Andrew's scan. This sorts the
+      points at $O(n \log n)$, then performs the Monotonic Chain Algorithm at $O(n)$.
+      \code{geom/convex-hull.cpp}
+    \subsubsectionRed{3D Convex Hull}
+      Currently $O(N^2)$, but can be optimized to a randomized $O(N\log{N})$ using the Clarkson-Shor algorithm.
+      Sauce: \href{https://codeforces.com/blog/entry/81768}{Efficient 3D Convex Hull Tutorial on CF}.
+      \code{geom/convex-hull-3d.cpp}
+  \subsectionRed{Delaunay Triangulation}
+    Simply map each point $(x,y)$ to $(x,y,x^2+y^2)$, find the 3d convex hull, and drop the 3rd dimension.
   \subsection{Point in Polygon}
     Check if a point is strictly inside (or on the border) of a polygon in $O(n)$.
     \code{geom/pt-in-poly.cpp}
