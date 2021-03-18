@@ -24,7 +24,11 @@
 \usepackage{soul}
 \usepackage{comment}
 
-\setcounter{tocdepth}{2}
+\ifdefined\ICPCCONFIG
+  \setcounter{tocdepth}{2}
+\else
+  \setcounter{tocdepth}{1}
+\fi
 
 \newcommand{\subtitle}[1]{%
   \posttitle{%
@@ -109,12 +113,14 @@
 \input{tex/math}
 \input{tex/strings}
 
-\input{tex/other}
-\input{tex/useful_info}
+\ifdefined\ICPCCONFIG
+  \input{tex/other}
+  \input{tex/useful_info}
+  \input{tex/other_combinatorics}
+\fi
 
 \clearpage
 
-\input{tex/other_combinatorics}
 
 \end{multicols*}
 

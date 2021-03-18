@@ -29,5 +29,6 @@
 /reference/*
 /_code
 /_minted-notebook
+/_minted-notebook-trunc
 /notebook.synctex.gz
 /codelib
