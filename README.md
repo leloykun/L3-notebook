@@ -22,6 +22,8 @@ A collection of algorithms, data structures and other useful information for com
 
 ### Todo
 - Add tests
-- Automate testing with GitHub Actions
-- Add Dominator Tree implementation
+- Automate testing and building docs with GitHub Actions
 - Clean up Geometry section
+- Add implementation of:
+  - Dominator Tree
+  - Fast Matrix Inverse in $F_2$

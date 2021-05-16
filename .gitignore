@@ -32,3 +32,8 @@
 /_minted-notebook-trunc
 /notebook.synctex.gz
 /codelib
+
+/docs/*
+!/docs/index.md
+!/docs/contents.md
+!/docs/_config.yml
