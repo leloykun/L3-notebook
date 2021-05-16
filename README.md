@@ -1,4 +1,4 @@
-# AdMU Comprog Team Notebook
+# AdMU ProgVar Team Notebook
 A collection of algorithms, data structures and other useful information for competitive programming. Used by everyone in the Ateneo de Manila University Programming Varsity.
 
 ---

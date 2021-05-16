@@ -1,9 +1,3 @@
-# AdMU Comprog Team Notebook
-A collection of algorithms, data structures and other useful information for competitive programming. Used by everyone in the Ateneo de Manila University Programming Varsity.
-
----
-
-
 ### How to contribute:
 - clone this repository using `git clone https://github.com/leloykun/admu-progvar-notebook.git`
 - add codes to the folder `/code` and edit `notebook.tex`
