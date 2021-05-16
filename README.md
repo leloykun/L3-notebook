@@ -1,5 +1,8 @@
-# admu-progvar-notebook
-A collection of algorithms, data structures and other useful information for competitive programming.
+# AdMU Comprog Team Notebook
+A collection of algorithms, data structures and other useful information for competitive programming. Used by everyone in the Ateneo de Manila University Programming Varsity.
+
+---
+
 
 ### How to contribute:
 - clone this repository using `git clone https://github.com/leloykun/admu-progvar-notebook.git`
@@ -16,3 +19,9 @@ A collection of algorithms, data structures and other useful information for com
 - <span style="color:black">Black</span>: no code yet
 - To color a (sub)(sub)section, simple use `(sub)(sub)section(COLOR)`
     - For example, `subsectionBlack` gets you a black-colored subsection
+
+### Todo
+- Add tests
+- Automate testing with GitHub Actions
+- Add Dominator Tree implementation
+- Clean up Geometry section
