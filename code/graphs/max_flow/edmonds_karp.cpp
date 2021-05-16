@@ -24,8 +24,7 @@ struct flow_network {
       for (int v : adj[u]) {
         if (res(u, v) > 0 and par[v] == -1) {
           par[v] = u;
-          if (v == this->t)
-            return true;
+          if (v == this->t) return true;
           q.push(v); } } }
     return false; }
   bool aug_path() {
