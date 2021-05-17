@@ -35,5 +35,5 @@
 
 /docs/*
 !/docs/index.md
-!/docs/contents.md
 !/docs/_config.yml
+!/docs/_layouts/default.html

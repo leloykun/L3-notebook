@@ -21,6 +21,7 @@ A collection of algorithms, data structures and other useful information for com
     - For example, `subsectionBlack` gets you a black-colored subsection
 
 ### Todo
+- Add layout.txt
 - Add tests
 - Automate testing and building docs with GitHub Actions
 - Clean up Geometry section
