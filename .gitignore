@@ -33,7 +33,11 @@
 /notebook.synctex.gz
 /codelib
 
-/docs/*
-!/docs/index.md
-!/docs/_config.yml
-!/docs/_layouts/default.html
+/docs/_posts
+/docs/_site
+/docs/.gitignore
+/docs/404.html
+/docs/about.markdown
+/docs/Gemfile
+/docs/Gemfile.lock
+/docs/index.markdown
