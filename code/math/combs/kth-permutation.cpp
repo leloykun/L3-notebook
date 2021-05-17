@@ -1,9 +1,8 @@
-bool kth_permutation(int arr[], int n, LL k) {
-    factoradic(arr, n); // values from 0 to n-1
-    for (int i = n-1; i >= 0 && k > 0; --i){
-        LL temp = arr[i] + k;
-        arr[i] = temp % (n - i);
-        k = temp / (n - i);
-    }
-    permute(arr, n);
-    return k == 0; }
+std::vector<int> nth_permutation(int cnt, int n) {
+  std::vector<int> idx(cnt), per(cnt), fac(cnt);
+  rep(i,0,cnt) idx[i] = i;
+  rep(i,1,cnt+1) fac[i - 1] = n % i, n /= i;
+  for (int i = cnt - 1; i >= 0; i--)
+    per[cnt - i - 1] = idx[fac[i]],
+    idx.erase(idx.begin() + fac[i]);
+  return per; }
